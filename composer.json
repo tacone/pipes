@@ -1,0 +1,15 @@
+{
+    "name": "pipes/pipes",
+    "description": "A thin wrapper over PHP iterators",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tacone",
+            "email": "known-only@to.me"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "phpunit/phpunit": "dev-master"
+    }
+}
