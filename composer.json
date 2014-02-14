@@ -8,8 +8,14 @@
             "email": "known-only@to.me"
         }
     ],
-    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "pipes\\": "src/"
+        },
+        "files": ["src/functions.php"]
+    },
     "require": {
-        "phpunit/phpunit": "dev-master"
-    }
+    },
+    "prefer-stable" : true,
+    "minimum-stability": "dev"
 }
