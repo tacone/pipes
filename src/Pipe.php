@@ -24,10 +24,7 @@ class Pipe implements IteratorAggregate
 
     public function toArray()
     {
-        if (is_a($this->var, '\ArrayIterator')) {
-            return $this->var->getArrayCopy();
-        }
-//        return $this->var;
+        return iterator_to_array($this->var, true);
     }
 
     public function getIterator()
