@@ -1,6 +1,6 @@
 <?php
 
-use pipes\Pipe;
+use Pipes\Pipe;
 
 /**
  * 

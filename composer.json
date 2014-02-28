@@ -10,11 +10,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "pipes\\": "src/"
+            "Pipes\\": "src/"
         },
         "files": ["src/functions.php"]
     },
     "require": {
+        "phpunit/phpunit": "@stable"
     },
     "prefer-stable" : true,
     "minimum-stability": "dev"

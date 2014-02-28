@@ -3,9 +3,13 @@
 class BasicsTest extends  \PHPUnit_Framework_TestCase
 {
     
+    protected function numerics ()
+    {
+        return [1,2,3,5];
+    }
     public function testWrapper ()
     {
-        $array= [1,2,3,5];
+        $array = $this->numerics();
         $this->assertEquals( p($array)->toArray(), $array);
         
         list ($a, $b, $c, $d) = p($array)->toArray();
@@ -17,17 +21,47 @@ class BasicsTest extends  \PHPUnit_Framework_TestCase
             $result[] = $value;
         }
         $this->assertEquals($array, $result);
-        
         $this->assertEquals(p($array)->toArray(), $result);
         
     }
     public function testForeach ()
     {
-        $array = ["bananas","01",1,2,3,4];
+        $array = $this->numerics();
         $obj = p($array);
         foreach ($obj as $v)
         {
             $this->assertSame(array_shift($array), $v);
         }
+    }
+    public function testDecorate ()
+    {
+        $array = $this->numerics();
+        $pipe = p ( $array );
+        $obj = p ($pipe);
+        foreach ($obj as $v)
+        {
+            $this->assertSame(array_shift($array), $v);
+        }
+    }
+    public function testChaining ()
+    {
+        $array = $this->numerics();
+        $pipe = p ( $array )->filter(function(){ return false; });
+        foreach ($pipe as $v)
+        {
+            $this->fail();
+        }
+        
+        $array = $this->numerics();
+        $pipe = p ( $array )
+            ->filter(function(){ return false; })
+            ->filter(function(){ return false; })
+            ;
+        foreach ($pipe as $v)
+        {
+            $this->fail();
+        }
+        
+        $this->assertEquals(get_class(p($array)), get_class($pipe));
     }
 }
