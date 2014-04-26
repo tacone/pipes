@@ -9,6 +9,7 @@ class Pipe implements IteratorAggregate
 {
 
     use Filter\FilterTrait;
+    use Filter\LimitTrait;
 
     protected $var;
 
