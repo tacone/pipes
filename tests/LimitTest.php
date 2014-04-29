@@ -16,13 +16,15 @@ class LimitTest extends BaseTestCase
         $expected = [ 'b' => 'bananas', 'c' => 'cherries'];
         $this->assertEquals($expected, $obj->toArray());
         
+        $obj = p($array)->limit(1,0);
+        $this->assertEquals([], $obj->toArray());
+        
         try {
             $obj = p($array)->limit(-2);
             $this->fail("\\OutOfRangeException expected");
         } catch (\OutOfRangeException $ex) {
             
         }
-        
     }
 
 }
