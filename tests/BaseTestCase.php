@@ -21,6 +21,20 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
         ];
     }
 
+    protected function types()
+    {
+        return [
+            'boolean' => true,
+            'boolean_false' => false,
+            'number' => 12,
+            'string' => 'hello world',
+            'array' => ['a','b','c'],
+            'float' => 1.7,
+            'object' => new \stdclass,
+            'null' => null,
+        ];
+    }
+
     public function testMe()
     {
         //todo: strip this method without having phpunit fail all over

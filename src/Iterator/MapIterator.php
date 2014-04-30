@@ -4,8 +4,9 @@ namespace Pipes\Iterator;
 
 class MapIterator implements \OuterIterator {
 
-  protected $innerIterator = NULL;
-  protected $callback = NULL;
+  protected $innerIterator = null;
+  protected $callback = null;
+  protected $result = null;
 
   public function __construct(\Iterator $innerIterator, $callback) {
     $this->innerIterator = $innerIterator;
@@ -13,7 +14,11 @@ class MapIterator implements \OuterIterator {
   }
 
   protected function map($value, $key) {
-    return call_user_func($this->callback, $value, $key, $this);
+    if (!$this->result)
+    {
+      $this->result = new \Pipes\Concept\Value( call_user_func($this->callback, $value, $key, $this) );
+    }
+    return $this->result->getValue();
   }
 
   public function getInnerIterator() {
@@ -21,25 +26,36 @@ class MapIterator implements \OuterIterator {
   }
 
   public function rewind() {
+    $this->result = null;
     $this->getInnerIterator()->rewind();
   }
 
   public function next() {
+    $this->result = null;
     $this->getInnerIterator()->next();
   }
 
   public function key() {
-    return $this->getInnerIterator()->key();
-  }
-
-  public function current() {
-    return $this->map(
+    $result = $this->map(
       $this->getInnerIterator()->current(),
       $this->getInnerIterator()->key()
     );
+    if (!is_a($result, "\Pipes\Concept\Emittable") || !$result->hasKey()) return $this->getInnerIterator()->key();
+    return $result->getKey();
+  }
+
+  public function current() {
+    $result = $this->map(
+      $this->getInnerIterator()->current(),
+      $this->getInnerIterator()->key()
+    );
+    if (!is_a($result, "\Pipes\Concept\Emittable")) return $result;
+    return $result->getValue();
   }
 
   public function valid() {
-    return $this->getInnerIterator()->valid();
+    $valid = $this->getInnerIterator()->valid();
+    if ( !$valid ) $this->result = null;
+    return $valid;
   }
 }

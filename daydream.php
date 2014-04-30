@@ -26,7 +26,6 @@ p($this->getUsers())->chunk(100)->limit(1000)->each(function($usersChunk) {
 /**
  * distributing the effort
  */
-p($this->getUsers())->shard(3, function($v, $k, Pipe $p){
+p($this->getUsers())->sha1(str)rd(3, function($v, $k, Pipe $p){
     echo "shard n. {$p->getShard()}: $k => $v \n";
 });
-

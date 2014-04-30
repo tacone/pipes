@@ -12,10 +12,11 @@ class Pipe implements IteratorAggregate
     use Filter\LimitTrait;
     use Filter\EachTrait;
     use Filter\MapTrait;
+    use Concept\EmitTrait;
 
     protected $var;
 
-    function __construct($var)
+    function __construct($var = null)
     {
         if (is_array($var)) {
             $this->var = new ArrayIterator($var);
@@ -23,6 +24,7 @@ class Pipe implements IteratorAggregate
         if ($var instanceof \Traversable) {
             $this->var = $var;
         }
+        if (!func_num_args()) $this->var = [];
     }
 
     public function toArray()

@@ -7,7 +7,8 @@ use Pipes\Pipe;
  * @param mixed $var
  * @return Pipe
  */
-function p($var)
+function p($var = null)
 {
-    return new Pipe($var);
+	if (!func_num_args()) return new Pipe();
+    return new Pipe($var); 
 }
