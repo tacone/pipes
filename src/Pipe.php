@@ -10,6 +10,8 @@ class Pipe implements IteratorAggregate
 
     use Filter\FilterTrait;
     use Filter\LimitTrait;
+    use Filter\EachTrait;
+    use Filter\MapTrait;
 
     protected $var;
 

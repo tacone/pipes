@@ -7,6 +7,7 @@
 
 p($this->getUsers())->limit(1000)->map(function($user) {
     // process the user
+    return p::emit($user['id'], $user);
 })->each(function($userData){
     // save the data
 });
