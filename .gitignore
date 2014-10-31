@@ -1,6 +1,7 @@
 nbproject
 vendor
 composer.lock
+.idea
 
 # Compiled source #
 ###################

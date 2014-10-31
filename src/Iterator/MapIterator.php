@@ -40,7 +40,7 @@ class MapIterator implements \OuterIterator {
       $this->getInnerIterator()->current(),
       $this->getInnerIterator()->key()
     );
-    if (!is_a($result, "\Pipes\Concept\Emittable") || !$result->hasKey()) return $this->getInnerIterator()->key();
+    if (!is_a($result, "\\Pipes\\Concept\\Emittable") || !$result->hasKey()) return $this->getInnerIterator()->key();
     return $result->getKey();
   }
 
@@ -49,7 +49,7 @@ class MapIterator implements \OuterIterator {
       $this->getInnerIterator()->current(),
       $this->getInnerIterator()->key()
     );
-    if (!is_a($result, "\Pipes\Concept\Emittable")) return $result;
+    if (!is_a($result, "\\Pipes\\Concept\\Emittable")) return $result;
     return $result->getValue();
   }
 

@@ -11,7 +11,7 @@ class Emittable extends Value
 	{
 		if(!$this->key)
 		{
-			throw new \LogicException("Emitted value has no defined key");
+			throw new \LogicException("Emitted value has no key defined");
 			
 		}
 		return $this->key->getValue();

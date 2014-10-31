@@ -24,8 +24,26 @@ p($this->getUsers())->chunk(100)->limit(1000)->each(function($usersChunk) {
 });
 
 /**
+ * Push and next
+ */
+
+$p()->push($user)->next(); // $user
+
+/*
+ * auto-next
+ */
+
+$p($array)->each('myfunc')->autonext(); // loops to the end
+$p->push($item); // each will be executed
+
+
+
+/**
  * distributing the effort
  */
-p($this->getUsers())->sha1(str)rd(3, function($v, $k, Pipe $p){
+p($this->getUsers())->shard(3, function($v, $k, Pipe $p){
     echo "shard n. {$p->getShard()}: $k => $v \n";
 });
+
+// in memory sqlite?
+p($files)->where('size > 1000 AND mtime < NOW()-1000 ORDER BY extension, filename');

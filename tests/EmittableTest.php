@@ -13,6 +13,7 @@ class EmittableTest extends BaseTestCase
     		$this->assertFalse($emitted->hasKey());
     		try {
     			$emitted->getKey();
+                $this->assertTrue(false, 'LogicException expected');
     		} catch (\LogicException $e)
     		{
     			// we expect this
