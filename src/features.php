@@ -32,8 +32,17 @@ p()->queues->file('queue.txt');
 p()->queues->json('queue.json'); // one json per line
 p()->queues->post($url, $moreParams);
 
+// --- advanced stuff
 
-// later on
+// caching
+
+p()->keep(3)->each(function(){
+    $previous = p()->kept(-1); // also -2, -3
+});
+
+
+
+// map reduce
 p()->shard($function);
 p()->reduce($shard);
 
