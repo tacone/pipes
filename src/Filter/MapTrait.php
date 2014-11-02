@@ -6,6 +6,6 @@ trait MapTrait
 {
     public function map(callable $callback)
     {
-        return new static( new \Pipes\Iterator\MapIterator($this->getIterator(), $callback));
+        return $this->chainWith(new \Pipes\Iterator\MapIterator($this->getIterator(), $callback));
     }
 }

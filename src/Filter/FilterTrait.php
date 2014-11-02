@@ -6,6 +6,6 @@ trait FilterTrait
 {
     public function filter(callable $callback)
     {
-        return new static( new \CallbackFilterIterator($this->getIterator(), $callback));
+        return $this->chainWith(new \CallbackFilterIterator($this->getIterator(), $callback));
     }
 }

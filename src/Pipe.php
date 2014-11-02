@@ -37,4 +37,9 @@ class Pipe implements IteratorAggregate
         return $this->var;
     }
 
+    protected function chainWith(\Iterator $iterator)
+    {
+        return new static($iterator);
+    }
+
 }
