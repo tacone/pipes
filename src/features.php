@@ -10,7 +10,7 @@ p()->each($function);
 p()->filter($function);
 p()->limit($skip = 0, $max);
 p()->map($function);
-p()->merge($queue);
+p()->enqueue($queue);
 p()->push($element);
 p()->skip($num);
 
