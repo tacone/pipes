@@ -14,6 +14,11 @@ p()->enqueue($queue);
 p()->push($element);
 p()->skip($num);
 
+// terminals
+p()->toArray(); // outputs an array. Keys are not preserved
+p()->reduce($function = null); // outputs an array. Keys preserved. Conflicts handled by $function
+
+
 // time pipes
 p()->maxTime($seconds); //also floats 0.001 etc
 p()->wait($seconds, $function = null); // !$function ? wait again
@@ -35,7 +40,6 @@ p()->queues->post($url, $moreParams);
 // --- advanced stuff
 
 // caching
-
 p()->keep(3)->each(function(){
     $previous = p()->kept(-1); // also -2, -3
 });
