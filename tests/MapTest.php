@@ -10,7 +10,6 @@ class MapTest extends BaseTestCase
         $array = $this->numerics();
         $obj = p($array)->map(function ($value) {
             return $value;
-            
         });
         $result = $obj->toArray();
         $this->assertEquals($array, $result);
@@ -20,7 +19,7 @@ class MapTest extends BaseTestCase
             return strtoupper($value);
         });
         $result = $obj->toArray();
-        $expected = array_map('strtoupper', $array);        
+        $expected = array_map('strtoupper', $array);
         $this->assertEquals($expected, $result);
 
         // same as previous, but using emit()
@@ -29,7 +28,7 @@ class MapTest extends BaseTestCase
             return p()->emit(strtoupper($value));
         });
         $result = $obj->toArray();
-        $expected = array_map('strtoupper', $array);        
+        $expected = array_map('strtoupper', $array);
         $this->assertEquals($expected, $result);
 
         // same as previous, emitting the key
@@ -40,5 +39,54 @@ class MapTest extends BaseTestCase
         $result = $obj->toArray();
         $expected = array_combine(array_map('strtoupper', array_keys($array)), array_map('strtoupper', $array));
         $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * In case of multiple items with the same key, the last one should win
+     */
+    function testKeyConflicts()
+    {
+        // test with string keys
+        $array = $this->numerics();
+        $obj = p($array)->map(function ($value) {
+            return p()->emit('a', $value);
+        });
+        $result = $obj->toArray();
+        $this->assertEquals([
+            'a' => 5
+        ], $result);
+
+        // test with numeric indexes
+        $array = $this->numerics();
+        $obj = p($array)->map(function ($value) {
+            return p()->emit(0, $value);
+        });
+        $result = $obj->toArray();
+        $this->assertEquals([
+            0 => 5
+        ], $result);
+    }
+
+    function testGenerator()
+    {
+        if (version_compare(PHP_VERSION, '5.5') < 1) {
+            echo "PHP<5.5:skipping";
+            return;
+        }
+
+        $array = function () {
+            $a = 0;
+            while ($a <= 1e4) {
+                yield $a++;
+            }
+        };
+
+        $obj = p($array())->map(function ($value) {
+            return p()->emit(0, $value);
+        });
+        $result = $obj->toArray();
+        $this->assertEquals([
+            0 => 1e4
+        ], $result);
     }
 }
