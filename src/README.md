@@ -23,5 +23,18 @@ The advantages are:
 - you can traverse enourmous arrays using less memory
 - you don't execute unnecessary operations when you need just
   a subset.
+- the resulting code is neat and pretty
 
 Of course this is just the beginning.
+
+## Features
+
+The current featureset is pretty minimal:
+
+```php
+p($array)->each($function); //ok
+p($array)->filter($function); //ok
+p($array)->limit($skip = 0, $max); //ok
+p($array)->map($function); //ok
+p($array)->skip($num); //ok
+```

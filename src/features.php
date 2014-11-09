@@ -12,7 +12,7 @@ p()->limit($skip = 0, $max); //ok
 p()->map($function); //ok
 p()->enqueue($queue);
 p()->push($element);
-p()->skip($num);
+p()->skip($num); //ok
 
 // terminals
 p()->toArray(); // outputs an array. Keys are not preserved
