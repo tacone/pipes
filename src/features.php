@@ -6,10 +6,10 @@
 
 // pipes
 p()->chunk($num);
-p()->each($function);
-p()->filter($function);
-p()->limit($skip = 0, $max);
-p()->map($function);
+p()->each($function); //ok
+p()->filter($function); //ok
+p()->limit($skip = 0, $max); //ok
+p()->map($function); //ok
 p()->enqueue($queue);
 p()->push($element);
 p()->skip($num);
@@ -19,7 +19,7 @@ p()->toArray(); // outputs an array. Keys are not preserved
 p()->reduce($function = null); // outputs an array. Keys preserved. Conflicts handled by $function
 
 
-// time pipes
+// timed pipes
 p()->maxTime($seconds); //also floats 0.001 etc
 p()->wait($seconds, $function = null); // !$function ? wait again
 

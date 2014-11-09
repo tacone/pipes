@@ -2,6 +2,8 @@
 
 namespace Pipes\Test;
 
+use Pipes\Concept\Emittable;
+
 class MapTest extends BaseTestCase
 {
 
@@ -70,7 +72,7 @@ class MapTest extends BaseTestCase
     function testGenerator()
     {
         if (version_compare(PHP_VERSION, '5.5') < 1) {
-            echo "PHP<5.5:skipping";
+            echo "[PHP<5.5:skipping]";
             return;
         }
 
@@ -88,5 +90,23 @@ class MapTest extends BaseTestCase
         $this->assertEquals([
             0 => 1e4
         ], $result);
+
+//       foreach ($array() as $i){
+//            new Emittable($i);
+//        }
+
+//        $array = function () {
+//            $a = 0;
+//            while ($a <= 1e6) {
+//                yield $a++;
+//            }
+//        };
+//
+//        foreach (p($array())->filter(function () {
+//            return true;
+//        }) as $i) {
+//
+//        }
+
     }
 }
