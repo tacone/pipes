@@ -15,7 +15,7 @@
         },
         "files": ["src/functions.php"]
     },
-    "require": {
+    "require-dev": {
         "phpunit/phpunit": "@stable"
     },
     "prefer-stable" : true,
