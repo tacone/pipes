@@ -76,12 +76,15 @@ class MapTest extends BaseTestCase
             return;
         }
 
-        $array = function () {
-            $a = 0;
-            while ($a <= 1e4) {
-                yield $a++;
-            }
-        };
+        // avoid parse errors on php 5.4
+        eval('
+            $array = function () {
+                $a = 0;
+                while ($a <= 1e4) {
+                    yield $a++;
+                }
+            };
+        ');
 
         $obj = p($array())->map(function ($value) {
             return p()->emit(0, $value);
