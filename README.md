@@ -1,5 +1,7 @@
 Pipes
 ==============
+[![Build Status](https://travis-ci.org/tacone/pipes.svg)](https://travis-ci.org/tacone/pipes)
+[![Coverage Status](https://img.shields.io/coveralls/tacone/pipes.svg)](https://coveralls.io/r/tacone/pipes)
 
 Pipes is a thin wrapper around PHP SPL iterators.
 
