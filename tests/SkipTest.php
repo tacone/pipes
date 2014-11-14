@@ -37,4 +37,17 @@ class SkipTest extends BaseTestCase
         $this->assertSame($expected, $obj->toArray());
     }
 
+    public function testNoRewind()
+    {
+        $iterator = new \NoRewindIterator(new \ArrayIterator($this->associative()));
+        $obj = p($iterator)->skip(2);
+        $expected = [
+            'c' => 'cherries',
+            'd' => 'damsons',
+            'e' => 'elderberries',
+            'f' => 'figs',
+        ];
+        $this->assertSame($expected, $obj->toArray());
+    }
+
 }

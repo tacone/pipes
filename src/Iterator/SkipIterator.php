@@ -35,16 +35,8 @@ class SkipIterator extends \FilterIterator
 
     public function rewind()
     {
-        $skipped = $this->skipped;
-        try {
-            // order matters
-            $this->skipped = 0;
-            parent::rewind();
-        } catch (\Exception $e) {
-            $this->skipped = $skipped;
-            throw $e;
-        }
-
+        $this->skipped = 0;
+        parent::rewind();
     }
 
 

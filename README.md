@@ -39,4 +39,5 @@ p($array)->filter($function); //ok
 p($array)->limit($skip = 0, $max); //ok
 p($array)->map($function); //ok
 p($array)->skip($num); //ok
+p($array)->chunk($size); //ok
 ```
