@@ -17,4 +17,10 @@ class ChunkTest extends BaseTestCase
         $this->assertSame($expected, $obj->toArray());
     }
 
+    public function testException()
+    {
+        $this->setExpectedException('\InvalidArgumentException');
+        $obj = p($this->associative())->chunk(-3);
+    }
+
 }
