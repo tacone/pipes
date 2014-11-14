@@ -1,14 +1,12 @@
 <?php
-
-namespace Pipes\Iterator;
-
-use Traversable;
-
 /**
  * Derived by Guzzle's ChunkedIterator https://github.com/guzzle/iterator/blob/master/ChunkedIterator.php
  * credit goes to the original authors
  */
 
+namespace Pipes\Iterator;
+
+use Traversable;
 
 
 class ChunkIterator extends \IteratorIterator

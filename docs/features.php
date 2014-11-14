@@ -5,12 +5,12 @@
  */
 
 // pipes
-p()->chunk($num);
+p()->chunk($num); // ok
 p()->each($function); //ok
 p()->filter($function); //ok
 p()->limit($skip = 0, $max); //ok
 p()->map($function); //ok
-p()->enqueue($queue);
+p()->append($queue);
 p()->push($element);
 p()->skip($num); //ok
 
@@ -44,10 +44,6 @@ p()->keep(3)->each(function(){
     $previous = p()->kept(-1); // also -2, -3
 });
 
-
-
 // map reduce
 p()->shard($function);
 p()->reduce($shard);
-
- 
