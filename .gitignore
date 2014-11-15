@@ -1,8 +1,3 @@
-nbproject
-vendor
-composer.lock
-.idea
-
 # Compiled source #
 ###################
 *.com
@@ -40,3 +35,12 @@ composer.lock
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# MISC #
+########
+
+nbproject
+vendor
+composer.lock
+.idea
+docs/playground.php
