@@ -18,12 +18,9 @@ class AppendIterator extends \AppendIterator
      *
      * @param \Iterator $iterator Iterator to append
      */
-    public function append($iterator)
+    public function append(\Iterator $iterator)
     {
-        if (is_array($iterator))
-        {
-            $iterator = new \ArrayIterator($iterator);
-        }
+
         $this->getArrayIterator()->append($iterator);
     }
 }

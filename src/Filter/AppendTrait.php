@@ -14,6 +14,10 @@ trait AppendTrait
      */
     public function append($iterator)
     {
+        if (is_array($iterator))
+        {
+            $iterator = new \ArrayIterator($iterator);
+        }
         $appendIterator = new AppendIterator();
         $appendIterator->append($this->getIterator());
         $appendIterator->append($iterator);

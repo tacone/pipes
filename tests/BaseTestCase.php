@@ -3,6 +3,11 @@ namespace Pipes\Test;
 
 class BaseTestCase extends \PHPUnit_Framework_TestCase
 {
+    public function __construct($name = null, array $data = array(), $dataName = '')
+    {
+        error_reporting(-1);
+        parent::__construct($name, $data, $dataName);
+    }
 
     protected function numerics()
     {
