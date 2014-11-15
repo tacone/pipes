@@ -34,10 +34,11 @@ Of course this is just the beginning.
 The current featureset is pretty minimal:
 
 ```php
+p($array)->append($arrayOrIterator); //ok
+p($array)->chunk($size); //ok
 p($array)->each($function); //ok
 p($array)->filter($function); //ok
 p($array)->limit($skip = 0, $max); //ok
 p($array)->map($function); //ok
 p($array)->skip($num); //ok
-p($array)->chunk($size); //ok
 ```

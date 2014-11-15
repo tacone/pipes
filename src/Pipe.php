@@ -14,6 +14,7 @@ class Pipe implements IteratorAggregate
     use Filter\MapTrait;
     use Filter\SkipTrait;
     use Filter\ChunkTrait;
+    use Filter\AppendTrait;
     use Concept\EmitTrait;
 
     protected $var;

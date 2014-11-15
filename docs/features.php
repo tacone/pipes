@@ -10,12 +10,18 @@ p()->each($function); //ok
 p()->filter($function); //ok
 p()->limit($skip = 0, $max); //ok
 p()->map($function); //ok
-p()->append($queue);
+p()->append($queue); //ok
 p()->push($element);
 p()->skip($num); //ok
+p()->through($iteratorInstance);
+
+// factory methods
+p()->emit($key = null, $value); //ok
+p()->flags($flag1, $flag2 =null, $flagN = null);
 
 // terminals
-p()->toArray(); // outputs an array. Keys are not preserved
+p()->values(); // outputs an indexed array.
+p()->toArray(); // outputs an array. Keys preserved (last key wins)
 p()->reduce($function = null); // outputs an array. Keys preserved. Conflicts handled by $function
 
 
@@ -24,7 +30,7 @@ p()->maxTime($seconds); //also floats 0.001 etc
 p()->wait($seconds, $function = null); // !$function ? wait again
 
 // push to other queues (array, queues, chains)
-p()->each($function, $queue);
+p()->filter($function, $queue);
 p()->map($function, $queue);
 
 // accumulators
