@@ -7,15 +7,15 @@ use IteratorAggregate;
 
 class Pipe implements IteratorAggregate
 {
-
+    use Filter\AppendTrait;
+    use Filter\ChunkTrait;
+    use Filter\EachTrait;
+    use Concept\EmitTrait;
+    use Filter\FilesTrait;
     use Filter\FilterTrait;
     use Filter\LimitTrait;
-    use Filter\EachTrait;
     use Filter\MapTrait;
     use Filter\SkipTrait;
-    use Filter\ChunkTrait;
-    use Filter\AppendTrait;
-    use Concept\EmitTrait;
 
     protected $var;
 

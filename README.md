@@ -34,11 +34,12 @@ Of course this is just the beginning.
 The current featureset is pretty minimal:
 
 ```php
-p($array)->append($arrayOrIterator); //ok
-p($array)->chunk($size); //ok
-p($array)->each($function); //ok
-p($array)->filter($function); //ok
-p($array)->limit($skip = 0, $max); //ok
-p($array)->map($function); //ok
-p($array)->skip($num); //ok
+p($array)->append($arrayOrIterator); // uses \AppendIterator
+p($array)->chunk($size); // spits chunks like array_chunk
+p($array)->each($function); // executes $function for each element
+p($array)->files($function); // uses \GlobIterator
+p($array)->filter($function); // uses \FilterIteratorCallback
+p($array)->limit($skip = 0, $max); // uses \LimitIterator
+p($array)->map($function); // sort of array_map. Take a look to the tests.
+p($array)->skip($num); // skips the first $num elements
 ```
