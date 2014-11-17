@@ -11,7 +11,7 @@ p()->filter($function); //ok
 p()->limit($skip = 0, $max); //ok
 p()->map($function); //ok
 p()->append($queue); //ok
-p()->files($path);
+p()->files($path); //ok
 p()->push($element);
 p()->skip($num); //ok
 p()->through($iteratorInstance);

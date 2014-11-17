@@ -20,7 +20,7 @@
     <!-- Add a filter to make sure we don't count venders and Tests in the coverage report -->
     <filter>
         <whitelist>
-            <directory suffix=".php">./src</directory>
+            <directory suffix="Test.php">./src</directory>
             <exclude>
                 <directory>./docs</directory>
                 <directory>./vendor</directory>

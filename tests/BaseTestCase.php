@@ -44,4 +44,14 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
     {
         //todo: strip this method without having phpunit fail all over
     }
+
+    public function foreachArray($iterator)
+    {
+        $result = [];
+        foreach ($iterator as $key => $value)
+        {
+            $result[$key] = $value;
+        }
+        return $result;
+    }
 }
