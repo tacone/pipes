@@ -12,6 +12,7 @@ class FilesTest extends BaseTestCase
         foreach ($data as $value) {
             touch("$path/$value");
         }
+
         return $path;
     }
 
@@ -43,13 +44,11 @@ class FilesTest extends BaseTestCase
         $obj = p()->files("$path/*", true);
         $result = $obj->toArray();
         $this->assertSame(count($expected), count($result));
-        foreach ( $result as $fileInfo)
-        {
+        foreach ($result as $fileInfo) {
             $this->assertInstanceOf("\\SplFileInfo", $fileInfo);
         }
 
         $path = $this->removeTest($array, $path);
     }
-
 
 }

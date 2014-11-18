@@ -46,7 +46,7 @@ class MapTest extends BaseTestCase
     /**
      * In case of multiple items with the same key, the last one should win
      */
-    function testKeyConflicts()
+    public function testKeyConflicts()
     {
         // test with string keys
         $array = $this->numerics();
@@ -69,10 +69,11 @@ class MapTest extends BaseTestCase
         ], $result);
     }
 
-    function testGenerator()
+    public function testGenerator()
     {
         if (version_compare(PHP_VERSION, '5.5') < 1) {
             echo "[PHP<5.5:skipping]";
+
             return;
         }
 
@@ -94,7 +95,7 @@ class MapTest extends BaseTestCase
             0 => 1e4
         ], $result);
 
-//       foreach ($array() as $i){
+//       foreach ($array() as $i) {
 //            new Emittable($i);
 //        }
 

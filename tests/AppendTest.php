@@ -13,5 +13,4 @@ class AppendTest extends BaseTestCase
         $this->assertSame($expected, $obj->toArray());
     }
 
-
 }

@@ -35,7 +35,7 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
             'string' => 'hello world',
             'array' => ['a','b','c'],
             'float' => 1.7,
-            'object' => new \stdclass,
+            'object' => new \stdclass(),
             'null' => null,
         ];
     }
@@ -48,10 +48,10 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
     public function foreachArray($iterator)
     {
         $result = [];
-        foreach ($iterator as $key => $value)
-        {
+        foreach ($iterator as $key => $value) {
             $result[$key] = $value;
         }
+
         return $result;
     }
 }

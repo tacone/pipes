@@ -1,7 +1,7 @@
 <?php
 namespace Pipes\Test;
 
-class BasicsTest extends BaseTestCase
+class BasicTest extends BaseTestCase
 {
 
     public function testWrapper()
@@ -42,7 +42,7 @@ class BasicsTest extends BaseTestCase
     public function testChaining()
     {
         $array = $this->numerics();
-        $pipe = p($array)->filter(function() {
+        $pipe = p($array)->filter(function () {
             return false;
         });
         foreach ($pipe as $v) {
@@ -51,10 +51,10 @@ class BasicsTest extends BaseTestCase
 
         $array = $this->numerics();
         $pipe = p($array)
-            ->filter(function() {
+            ->filter(function () {
                 return false;
             })
-            ->filter(function() {
+            ->filter(function () {
             return false;
         })
         ;
@@ -64,7 +64,7 @@ class BasicsTest extends BaseTestCase
 
         $this->assertEquals(get_class(p($array)), get_class($pipe));
     }
-    public function testAssociative ()
+    public function testAssociative()
     {
 //        $array = $this->associative();
 //        $pipe = p($array);
