@@ -40,6 +40,7 @@ p($array)->each($function); // executes $function for each element
 p($array)->filter($function); // uses \FilterIteratorCallback
 p($array)->limit($skip = 0, $max); // uses \LimitIterator
 p($array)->skip($num); // skips the first $num elements
+p()->values(); // returns all the elements, reindexing the keys
 
 // transformators
 p($array)->append($arrayOrIterator); // uses \AppendIterator
@@ -50,5 +51,5 @@ p()->files($function); // uses \GlobIterator
 
 // terminators
 p()->toArray(); // returns a key=>value array. Last key wins.
-p()->values(); // returns an indexed array. No key collision.
+p()->toValues(); // returns an indexed array. No key collision.
 ```

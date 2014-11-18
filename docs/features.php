@@ -15,14 +15,15 @@ p()->files($path); //ok
 p()->push($element);
 p()->skip($num); //ok
 p()->through($iteratorInstance);
+p()->values(); // ok
 
 // factory methods
 p()->emit($key = null, $value); //ok
 p()->flags($flag1, $flag2 =null, $flagN = null);
 
 // terminals
-p()->values(); // outputs an indexed array.
-p()->toArray(); // outputs an array. Keys preserved (last key wins)
+p()->toValues(); // ok. outputs an indexed array.
+p()->toArray(); // ok. outputs an array. Keys preserved (last key wins)
 p()->reduce($function = null); // outputs an array. Keys preserved. Conflicts handled by $function
 
 

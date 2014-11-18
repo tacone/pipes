@@ -37,5 +37,19 @@ class ValuesTest extends BaseTestCase
         // foreach calls a rewind
         $this->assertSame($expected, $this->foreachArray($obj));
     }
+    public function testToValues()
+    {
+        $array = $this->associative();
+        $obj = p($array)->toValues();
+        $expected = [
+            'apples',
+            'bananas',
+            'cherries',
+            'damsons',
+            'elderberries',
+            'figs',
+        ];
+        $this->assertSame($expected, $obj);
+    }
 
 }
