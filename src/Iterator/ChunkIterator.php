@@ -8,7 +8,6 @@ namespace Pipes\Iterator;
 
 use Traversable;
 
-
 class ChunkIterator extends \IteratorIterator
 {
 
@@ -20,13 +19,13 @@ class ChunkIterator extends \IteratorIterator
     protected $chunk;
 
     /**
-     * @param Traversable $iterator Traversable iterator
-     * @param int $size Size to make each chunk
+     * @param  Traversable               $iterator Traversable iterator
+     * @param  int                       $size     Size to make each chunk
      * @throws \InvalidArgumentException
      */
     public function __construct(Traversable $iterator, $size)
     {
-        $size = (int)$size;
+        $size = (int) $size;
         if ($size < 0) {
             throw new \InvalidArgumentException("The chunk size must be equal or greater than zero; $size given");
         }
@@ -63,6 +62,6 @@ class ChunkIterator extends \IteratorIterator
 
     public function valid()
     {
-        return (bool)$this->chunk;
+        return (bool) $this->chunk;
     }
 }

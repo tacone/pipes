@@ -13,7 +13,7 @@ trait LimitTrait
      *  <code>p()->limit(2, 5)</code> will skip 2 element, and return the next 5.
      *
      * @param $boundary1
-     * @param bool $boundary2
+     * @param  bool        $boundary2
      * @return \Pipes\Pipe
      */
     public function limit($boundary1, $boundary2 = false)
@@ -28,6 +28,7 @@ trait LimitTrait
         if (!$count) {
             return $this->chainWith(new \ArrayIterator([]));
         }
+
         return $this->chainWith(new \LimitIterator($this->getIterator(), $offset, $count));
     }
 }

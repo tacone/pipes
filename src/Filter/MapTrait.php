@@ -12,12 +12,12 @@ trait MapTrait
      *
      * To also change the key, return<code>p()->emit($key,$value)</code>
      * <code>
-     * p()->map(function($value, $key, $iterator){
+     * p()->map(function ($value, $key, $iterator) {
      *     return p()->emit($key.'_new', $value);
      * });
      *
      *
-     * @param callable $callback
+     * @param  callable    $callback
      * @return \Pipes\Pipe
      */
     public function map(callable $callback)

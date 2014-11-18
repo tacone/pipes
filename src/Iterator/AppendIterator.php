@@ -6,8 +6,6 @@
 
 namespace Pipes\Iterator;
 
-use Traversable;
-
 /**
  * AppendIterator that is not affected by https://bugs.php.net/bug.php?id=49104
  */

@@ -4,14 +4,14 @@ namespace Pipes\Concept;
 
 class Value
 {
-	protected $value;
+    protected $value;
 
-	function __construct( $value )
-	{
-		$this->value = $value;
-	}
-	function getValue()
-	{
-		return $this->value;
-	}
+    public function __construct($value)
+    {
+        $this->value = $value;
+    }
+    public function getValue()
+    {
+        return $this->value;
+    }
 }

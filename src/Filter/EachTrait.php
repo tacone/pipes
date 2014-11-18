@@ -13,7 +13,7 @@ trait EachTrait
      *      - $key (iterator's key())
      *      - $iterator (the iterator itself)
      *
-     * @param callable $callback
+     * @param  callable    $callback
      * @return \Pipes\Pipe
      */
     public function each(callable $______callback)

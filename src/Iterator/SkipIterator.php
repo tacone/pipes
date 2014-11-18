@@ -30,6 +30,7 @@ class SkipIterator extends \FilterIterator
         }
 
         $this->skipped++;
+
         return false;
     }
 
@@ -38,6 +39,5 @@ class SkipIterator extends \FilterIterator
         $this->skipped = 0;
         parent::rewind();
     }
-
 
 }

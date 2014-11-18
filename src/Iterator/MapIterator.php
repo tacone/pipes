@@ -33,6 +33,7 @@ class MapIterator extends \FilterIterator
         if (!is_a($this->result, "\\Pipes\\Concept\\Emittable")) {
             return $this->result;
         }
+
         return $this->result->getValue();
     }
 
@@ -50,6 +51,7 @@ class MapIterator extends \FilterIterator
             $this->getInnerIterator()->current(),
             $this->getInnerIterator()->key()
         );
+
         return true;
     }
 }

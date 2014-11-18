@@ -11,7 +11,7 @@ trait FilterTrait
      * Only the elements for which the callback evaluates to TRUE
      * will be used
      *
-     * @param callable $callback
+     * @param  callable    $callback
      * @return \Pipes\Pipe
      */
     public function filter(callable $callback)

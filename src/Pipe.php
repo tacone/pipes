@@ -20,7 +20,7 @@ class Pipe implements IteratorAggregate
 
     protected $var;
 
-    function __construct($var = null)
+    public function __construct($var = null)
     {
         if (is_array($var)) {
             $this->var = new ArrayIterator($var);
@@ -42,7 +42,7 @@ class Pipe implements IteratorAggregate
     }
 
     /**
-     * @param \Iterator $iterator
+     * @param  \Iterator $iterator
      * @return static
      */
     protected function chainWith(\Iterator $iterator)

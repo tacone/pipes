@@ -6,9 +6,6 @@
 
 namespace Pipes\Iterator;
 
-use Traversable;
-
-
 class ValuesIterator extends \IteratorIterator
 {
     protected $key = 0;

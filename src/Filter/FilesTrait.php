@@ -38,22 +38,22 @@ trait FilesTrait
      *     ->in(__DIR__);
      *
      * // then you can use your new iterator with pipes :)
-     * p($iterator)->each(function(){
+     * p($iterator)->each(function () {
      *     //... do stuff
      * });
      *
      * </code>
      *
-     * @param string $path any file wildcard (ie:/tmp/*.txt). Use the full path!
-     * @param int $flags any GlobIterator or FilesystemIterator flag
+     * @param  string      $path  any file wildcard (ie:/tmp/*.txt). Use the full path!
+     * @param  int         $flags any GlobIterator or FilesystemIterator flag
      * @return \Pipes\Pipe
      */
     public function files($path, $flags = \GlobIterator::CURRENT_AS_PATHNAME)
     {
-        if ($flags === true)
-        {
+        if ($flags === true) {
             $flags = 0;
         }
+
         return $this->chainWith(new \GlobIterator($path, $flags));
     }
 }
