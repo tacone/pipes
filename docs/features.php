@@ -4,18 +4,19 @@
  * A brief list of features we want in
  */
 
+// iterator interface
+p()->next();
+p()->current();
+p()->valid();
+p()->rewind();
+p()->getInnerIterator();
+
 // pipes
 p()->chunk($num); // ok
 p()->each($function); //ok
 p()->filter($function); //ok
 p()->limit($skip = 0, $max); //ok
-p()->map($function); //ok
-p()->append($queue); //ok
-p()->files($path); //ok
-p()->push($element);
-p()->skip($num); //ok
-p()->through($iteratorInstance);
-p()->values(); // ok
+p()->map($function); //okdi
 
 // factory methods
 p()->emit($key = null, $value); //ok
