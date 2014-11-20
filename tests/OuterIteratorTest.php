@@ -2,9 +2,9 @@
 
 namespace Pipes\Test;
 
-use Pipes\Test\Tools\TestIterator;
+use Pipes\Test\TestCase\BaseIteratorTestCase;
 
-class IteratorFeaturesTest extends BaseTestCase
+class OuterIteratorTest extends BaseIteratorTestCase
 {
 
     public function testImplementsIteratorAggregate()
@@ -13,25 +13,9 @@ class IteratorFeaturesTest extends BaseTestCase
         $this->assertInstanceOf('\IteratorAggregate', $obj);
     }
 
-    public function testToIterator()
+    protected function getObject()
     {
-        $pipe = p($this->associative());
-        $obj = $pipe->toIterator();
-        $this->assertInstanceOf('\IteratorIterator', $obj);
-
-        $obj->rewind();
-        $this->assertTrue($obj->valid());
-        $this->assertSame('a', $obj->key());
-        $this->assertSame('apples', $obj->current());
-
-        $obj->next();
-        $this->assertTrue($obj->valid());
-        $this->assertSame('b', $obj->key());
-        $this->assertSame('bananas', $obj->current());
-
-        foreach (range(1, 10) as $u) {
-            $obj->next();
-        }
-        $this->assertFalse($obj->valid());
+        return  p($this->associative())->toIterator();
     }
+
 }

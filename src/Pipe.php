@@ -77,6 +77,7 @@ class Pipe implements IteratorAggregate
     {
 //        return new static($iterator);
         $this->var = $iterator;
+
         return $this;
     }
 
