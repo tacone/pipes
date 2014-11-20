@@ -25,6 +25,7 @@ p()->flags($flag1, $flag2 =null, $flagN = null);
 // terminals
 p()->toValues(); // ok. outputs an indexed array.
 p()->toArray(); // ok. outputs an array. Keys preserved (last key wins)
+p()->toIterator(); // ok. outputs an array. Keys preserved (last key wins)
 p()->reduce($function = null); // outputs an array. Keys preserved. Conflicts handled by $function
 
 

@@ -52,4 +52,5 @@ p()->files($function); // uses \GlobIterator
 // terminators
 p()->toArray(); // returns a key=>value array. Last key wins.
 p()->toValues(); // returns an indexed array. No key collision.
+p()->toIterator(); // returns a full IteratorIterator/OuterIterator
 ```
