@@ -12,6 +12,17 @@ p($this->getUsers())->limit(1000)->map(function($user) {
     // save the data
 });
 
+// alternative (PHP 5.5) syntax
+p($this)->map(function($value, &$key){
+    $key = 4545;
+});
+
+// alternative (PHP 5.5) syntax
+p($this)->map(function($value, $key){
+    yield $key => $value;
+});
+
+
 /**
  * process max 100 users at once, 1000 times
  */
@@ -36,7 +47,8 @@ $p()->push($user)->next(); // $user
 $p($array)->each('myfunc')->autonext(); // loops to the end
 $p->push($item); // each will be executed
 
-
+$a = new ReflectionFunction('');
+$a->get
 
 /**
  * distributing the effort

@@ -19,26 +19,28 @@ abstract class BaseIteratorTestCase extends BaseTestCase
         $this->assertInstanceOf('\Iterator', $obj);
     }
 
-    public function testIteration()
+    public function assertIteration($iterator, $expected)
     {
-        $e = $this->expected;
+        $this->assertInstanceOf('\IteratorIterator', $iterator);
 
-        $obj = $this->getObject();
-        $this->assertInstanceOf('\IteratorIterator', $obj);
+        $iterator->rewind();
+        $this->assertTrue($iterator->valid());
+        $this->assertSame($expected[0][0], $iterator->key());
+        $this->assertSame($expected[0][1], $iterator->current());
 
-        $obj->rewind();
-        $this->assertTrue($obj->valid());
-        $this->assertSame($e[0][0], $obj->key());
-        $this->assertSame($e[0][1], $obj->current());
-
-        $obj->next();
-        $this->assertTrue($obj->valid());
-        $this->assertSame($e[1][0], $obj->key());
-        $this->assertSame($e[1][1], $obj->current());
+        $iterator->next();
+        $this->assertTrue($iterator->valid());
+        $this->assertSame($expected[1][0], $iterator->key());
+        $this->assertSame($expected[1][1], $iterator->current());
 
         foreach (range(1, 10) as $u) {
-            $obj->next();
+            $iterator->next();
         }
-        $this->assertFalse($obj->valid());
+        $this->assertFalse($iterator->valid());
+    }
+
+    public function testIteration()
+    {
+        $this->assertIteration($this->getObject(), $this->expected);
     }
 }

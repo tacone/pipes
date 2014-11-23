@@ -47,6 +47,13 @@ p()->queues->file('queue.txt');
 p()->queues->json('queue.json'); // one json per line
 p()->queues->post($url, $moreParams);
 
+// anonymous pipes
+$func = p()->filter($foo)->map($bar);
+$result = $func('hello');
+
+$func->wrap($array);
+
+
 // --- advanced stuff
 
 // caching
