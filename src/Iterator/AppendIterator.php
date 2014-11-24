@@ -18,7 +18,8 @@ class AppendIterator extends \AppendIterator
      */
     public function append(\Iterator $iterator)
     {
-
+//        echo 'rewind'.PHP_EOL;
         $this->getArrayIterator()->append($iterator);
+//        $this->getArrayIterator()->append(new \NoRewindIterator($iterator));
     }
 }

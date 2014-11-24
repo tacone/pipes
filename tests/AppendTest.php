@@ -13,4 +13,14 @@ class AppendTest extends BaseTestCase
         $this->assertSame($expected, $obj->toArray());
     }
 
+//    public function testAppendedToTheRoot()
+//    {
+//        $array = $this->associative();
+//        $obj = p($array);
+//
+//        $obj->toIterator()->append($this->numerics());
+//        $expected = $this->associative() + $this->numerics();
+//        $this->assertSame($expected, $obj->toArray());
+//    }
+
 }

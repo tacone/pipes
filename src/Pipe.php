@@ -2,11 +2,27 @@
 
 namespace Pipes;
 
+use ArrayIterator;
 use IteratorAggregate;
 
 class Pipe implements IteratorAggregate
 {
     use PipenessTrait;
+
+    protected $var;
+
+    public function __construct(&$var = null)
+    {
+        if (is_array($var)) {
+            $this->var = new ArrayIterator($var);
+        }
+        if ($var instanceof \Traversable) {
+            $this->var = $var;
+        }
+        if (!func_num_args()) {
+            $this->var = [];
+        }
+    }
 
     /**
      * This method is implemented just because it's required by the

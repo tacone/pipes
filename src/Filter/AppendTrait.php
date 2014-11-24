@@ -17,10 +17,16 @@ trait AppendTrait
         if (is_array($iterator)) {
             $iterator = new \ArrayIterator($iterator);
         }
-        $appendIterator = new AppendIterator();
-        $appendIterator->append($this->getIterator());
+        if (is_a($this,"\\Pipes\\PipeIterator"))
+        {
+            $appendIterator = $this->getInnerIterator();
+        } else {
+            $appendIterator = new AppendIterator();
+            $appendIterator->append($this->unwrap());
+        }
+
         $appendIterator->append($iterator);
 
-        return $this->chainWith($appendIterator);
+        return $this->getRoot()->chainWith($appendIterator);
     }
 }

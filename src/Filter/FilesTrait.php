@@ -54,6 +54,6 @@ trait FilesTrait
             $flags = 0;
         }
 
-        return $this->chainWith(new \GlobIterator($path, $flags));
+        return new static (new \GlobIterator($path, $flags));
     }
 }

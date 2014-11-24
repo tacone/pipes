@@ -2,8 +2,7 @@
 
 namespace Pipes;
 
-use ArrayIterator;
-use IteratorAggregate;
+use Pipes\Iterator\AppendIterator;
 
 trait PipenessTrait
 {
@@ -17,26 +16,6 @@ trait PipenessTrait
     use Filter\MapTrait;
     use Filter\SkipTrait;
     use Filter\ValuesTrait;
-
-    protected $var;
-
-    public function __construct(&$var = null)
-    {
-        $this->initialize($var);
-    }
-
-    protected function initialize(&$var)
-    {
-        if (is_array($var)) {
-            $this->var = new ArrayIterator($var);
-        }
-        if ($var instanceof \Traversable) {
-            $this->var = $var;
-        }
-        if (!func_num_args()) {
-            $this->var = [];
-        }
-    }
 
 
     public function toArray()
@@ -56,10 +35,21 @@ trait PipenessTrait
      */
     public function toIterator()
     {
-        if (is_a($this, "\Iterator")) {
-            return $this;
+        $iterator = $this->unwrap();
+
+        if (is_array($iterator)) {
+            $iterator = new \ArrayIterator($iterator);
         }
-        return new \IteratorIterator($this);
+
+        $appendIterator = new AppendIterator();
+        $appendIterator->append($iterator);
+
+        return new PipeIterator($appendIterator);
+
+//        if (is_a($this, "\\Pipes\\PipeIterator")) {
+//            return $this;
+//        }
+//        return new PipeIterator($this);
     }
 
     /**
@@ -69,8 +59,47 @@ trait PipenessTrait
     protected function chainWith(\Iterator $iterator)
     {
         $this->var = $iterator;
-
         return $this;
     }
 
+    /**
+     * @return \Traversable
+     */
+    protected function getRoot()
+    {
+        return $this->getBaseOfChain($this,true);
+    }
+
+    /**
+     * @return \Traversable
+     */
+    protected function unwrap()
+    {
+        $iterator = func_num_args() ? func_get_arg(0) : $this;
+        return $this->getBaseOfChain($iterator);
+    }
+
+    protected function getBaseOfChain($iterator, $pipeInstance = false)
+    {
+        while (true) {
+            switch (true) {
+                case is_a($iterator, "\\Pipes\\PipeIterator"):
+                    $last = $iterator;
+                    $iterator = $last->getInnerIterator();
+                    break;
+                case is_a($iterator, "\\Pipes\\Pipe"):
+                    $last = $iterator;
+                    $iterator = $last->getIterator();
+                    break;
+                case is_a($iterator, "\\IteratorAggregate"):
+                    $iterator = $last->getIterator();
+                    break;
+                default:
+                    if ($pipeInstance) {
+                        return $last;
+                    }
+                    return $iterator;
+            }
+        }
+    }
 }

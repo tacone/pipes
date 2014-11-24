@@ -19,7 +19,8 @@ $result = p($array)->filter(function($v) {
 Unlike many collection libraries (such as underscore.php or
 Laravel's Illuminate/Collection) each step will be executed
 sequentially for each item. For instance, in the sample code
-above, only the first 100 even numbers would be printed.
+above, only the first 101 even numbers would be printed
+(the 101th will reach each() but not be passed through limit())
 
 The advantages are:
 - you can traverse enourmous arrays using less memory
