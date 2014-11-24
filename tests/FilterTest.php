@@ -2,7 +2,9 @@
 
 namespace Pipes\Test;
 
-class FilterTest extends BaseTestCase
+use Pipes\Test\TestCase\CallbackTestCase;
+
+class FilterTest extends CallbackTestCase
 {
     public function testFilter()
     {
@@ -42,8 +44,7 @@ class FilterTest extends BaseTestCase
     }
     public function testAppend()
     {
-        $me = $this;
-        $array = $obj = p(['a'=>3])->filter(function($v, $k, $pipe) use($me) {
+        $array = $obj = p(['a'=>3])->filter(function($v, $k, $pipe)  {
             if ($v === 3)
             {
                 $pipe->append(['b'=>4]);

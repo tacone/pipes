@@ -22,6 +22,6 @@ trait MapTrait
      */
     public function map(callable $callback)
     {
-        return $this->chainWith(new \Pipes\Iterator\MapIterator($this->getIterator(), $callback));
+        return $this->chainWith(new \Pipes\Iterator\MapIterator($this->toIterator(), $callback));
     }
 }

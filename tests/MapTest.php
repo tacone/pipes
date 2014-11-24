@@ -2,9 +2,9 @@
 
 namespace Pipes\Test;
 
-use Pipes\Concept\Emittable;
+use Pipes\Test\TestCase\CallbackTestCase;
 
-class MapTest extends BaseTestCase
+class MapTest extends CallbackTestCase
 {
 
     public function testMap()
@@ -94,23 +94,18 @@ class MapTest extends BaseTestCase
         $this->assertEquals([
             0 => 1e4
         ], $result);
+    }
 
-//       foreach ($array() as $i) {
-//            new Emittable($i);
-//        }
-
-//        $array = function () {
-//            $a = 0;
-//            while ($a <= 1e6) {
-//                yield $a++;
-//            }
-//        };
-//
-//        foreach (p($array())->filter(function () {
-//            return true;
-//        }) as $i) {
-//
-//        }
-
+    public function testAppend()
+    {
+        $me = $this;
+        $array = $obj = p(['a'=>3])->map(function($v, $k, $pipe) use($me) {
+            if ($v === 3)
+            {
+                $pipe->append(['b'=>4]);
+            }
+            return $v;
+        })->toArray();
+        $this->assertSame(['a'=>3,'b'=>4], $array);
     }
 }
