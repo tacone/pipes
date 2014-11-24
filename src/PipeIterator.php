@@ -2,9 +2,9 @@
 
 namespace Pipes;
 
-use IteratorAggregate;
 
-class Pipe implements IteratorAggregate
+
+class PipeIterator extends \IteratorIterator
 {
     use PipenessTrait;
 
