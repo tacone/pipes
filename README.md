@@ -30,6 +30,30 @@ The advantages are:
 
 Of course this is just the beginning.
 
+Let's write a file iterator that recurses a folder and returns
+a filepath => md5sum iterator:
+
+```php
+$myfiles = p()->files($path)
+    ->filter(function ($v, $k, $pipe) {
+        if (is_dir($v)) {
+            $pipe->append($pipe->files("$v/*"));
+            return false;
+        }
+        return true;
+    })->map(function ($v) {
+        return md5_file($v);
+    })
+    ->each(function ($v, $k) {
+        echo "$k -> $v" . PHP_EOL;
+    });
+    
+foreach ($myfiles as $path => $md5sum)
+{
+    // ...do something
+}
+```
+
 ## Features
 
 The current featureset is pretty minimal:
