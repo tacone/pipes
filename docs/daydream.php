@@ -22,6 +22,8 @@ p($this)->map(function($value, $key){
     yield $key => $value;
 });
 
+p($this)->map('$k=$v*2');
+
 
 /**
  * process max 100 users at once, 1000 times
@@ -48,7 +50,10 @@ $p($array)->each('myfunc')->autonext(); // loops to the end
 $p->push($item); // each will be executed
 
 $a = new ReflectionFunction('');
-$a->get
+//$a->get
+
+
+
 
 /**
  * distributing the effort

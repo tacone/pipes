@@ -29,6 +29,6 @@ trait LimitTrait
             return $this->chainWith(new \ArrayIterator([]));
         }
 
-        return $this->chainWith(new \LimitIterator($this->getIterator(), $offset, $count));
+        return $this->chainWith(new \LimitIterator($this->toIterator(), $offset, $count));
     }
 }

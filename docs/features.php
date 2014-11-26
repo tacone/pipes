@@ -13,7 +13,7 @@ p()->getInnerIterator();
 
 // pipes
 p()->chunk($num); // ok
-p()->each($function); //ok
+p()->each($function, $step = 1); //ok
 p()->filter($function); //ok
 p()->limit($skip = 0, $max); //ok
 p()->map($function); //okdi
@@ -53,6 +53,8 @@ $result = $func('hello');
 
 $func->wrap($array);
 
+
+p($array)->map('p()->emit($k, $v)');
 
 // --- advanced stuff
 
