@@ -17,8 +17,7 @@ trait AppendTrait
         if (is_array($iterator)) {
             $iterator = new \ArrayIterator($iterator);
         }
-        if (is_a($this,"\\Pipes\\PipeIterator"))
-        {
+        if (is_a($this,"\\Pipes\\PipeIterator")) {
             $appendIterator = $this->getInnerIterator();
         } else {
             $appendIterator = new AppendIterator();

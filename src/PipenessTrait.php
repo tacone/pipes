@@ -17,7 +17,6 @@ trait PipenessTrait
     use Filter\SkipTrait;
     use Filter\ValuesTrait;
 
-
     public function toArray()
     {
         return iterator_to_array($this->var, true);
@@ -59,6 +58,7 @@ trait PipenessTrait
     protected function chainWith(\Iterator $iterator)
     {
         $this->var = $iterator;
+
         return $this;
     }
 
@@ -76,6 +76,7 @@ trait PipenessTrait
     protected function unwrap()
     {
         $iterator = func_num_args() ? func_get_arg(0) : $this;
+
         return $this->getBaseOfChain($iterator);
     }
 
@@ -98,6 +99,7 @@ trait PipenessTrait
                     if ($pipeInstance) {
                         return $last;
                     }
+
                     return $iterator;
             }
         }

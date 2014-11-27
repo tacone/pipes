@@ -35,7 +35,7 @@ class FilterTest extends CallbackTestCase
     public function testArguments()
     {
         $me = $this;
-        $obj = p(['a'=>3])->filter(function($v, $k, $pipe) use($me) {
+        $obj = p(['a'=>3])->filter(function ($v, $k, $pipe) use ($me) {
             $me->assertSame(3, $v);
             $me->assertSame('a', $k);
             $me->assertInstanceOf('\Iterator', $pipe);
@@ -44,11 +44,11 @@ class FilterTest extends CallbackTestCase
     }
     public function testAppend()
     {
-        $array = $obj = p(['a'=>3])->filter(function($v, $k, $pipe)  {
-            if ($v === 3)
-            {
+        $array = $obj = p(['a'=>3])->filter(function ($v, $k, $pipe) {
+            if ($v === 3) {
                 $pipe->append(['b'=>4]);
             }
+
             return true;
         })->toArray();
         $this->assertSame(['a'=>3,'b'=>4], $array);
