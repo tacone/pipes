@@ -3,10 +3,43 @@ namespace Pipes\Test;
 
 class BaseTestCase extends \PHPUnit_Framework_TestCase
 {
+    static $useToIterator = false;
+
     public function __construct($name = null, array $data = array(), $dataName = '')
     {
         error_reporting(-1);
         parent::__construct($name, $data, $dataName);
+    }
+
+    /**
+     * @return \Pipes\Pipe|\Pipes\PipeIterator
+     */
+    public function p()
+    {
+        $arguments = func_get_args();
+        $pipe = call_user_func_array('\p', $arguments);
+        return static::$useToIterator ? $pipe->toIterator() : $pipe;
+    }
+
+    public function run(\PHPUnit_Framework_TestResult $result = null)
+    {
+        if ($result === null) {
+            $result = $this->createResult();
+        }
+        // test every request-format
+        $first = 0;
+        foreach ([false, true] as $useToIterator) {
+            static::$useToIterator = $useToIterator;
+            if (!$first) {
+                $this->setUp();
+            }
+            $result->run($this);
+            if ($first) {
+                $this->tearDown();
+            }
+        }
+
+        return $result;
     }
 
     protected function numerics()
@@ -33,7 +66,7 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
             'boolean_false' => false,
             'number' => 12,
             'string' => 'hello world',
-            'array' => ['a','b','c'],
+            'array' => ['a', 'b', 'c'],
             'float' => 1.7,
             'object' => new \stdclass(),
             'null' => null,

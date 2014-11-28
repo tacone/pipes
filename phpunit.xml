@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit backupGlobals="false"
-    backupStaticAttributes="false"
-    colors="true"
-    convertErrorsToExceptions="true"
-    convertNoticesToExceptions="true"
-    convertWarningsToExceptions="true"
-    processIsolation="false"
-    stopOnFailure="false"
-    stopOnError="false"
-    stopOnIncomplete="false"
-    stopOnSkipped="false"
-    syntaxCheck="false"
-    bootstrap="vendor/autoload.php">
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         stopOnError="false"
+         stopOnIncomplete="false"
+         stopOnSkipped="false"
+         syntaxCheck="false"
+         bootstrap="vendor/autoload.php">
     <testsuites>
         <testsuite name="Application Test Suite">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
+
+    <!-- Add our custom listener -->
+    <listeners>
+        <listener class="\Pipes\Test\TestCase\TestListener">
+        </listener>
+    </listeners>
+
     <!-- Add a filter to make sure we don't count venders and Tests in the coverage report -->
     <filter>
         <whitelist>

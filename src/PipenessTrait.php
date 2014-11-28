@@ -3,6 +3,7 @@
 namespace Pipes;
 
 use Pipes\Iterator\AppendIterator;
+use Pipes\Test\PipeIterationTest;
 
 trait PipenessTrait
 {
@@ -67,6 +68,9 @@ trait PipenessTrait
      */
     protected function getRoot()
     {
+//        echo "xxxxx\n";
+//        var_dump(get_class($this));
+//        echo "xxxxx\n";
         return $this->getBaseOfChain($this,true);
     }
 
@@ -80,8 +84,9 @@ trait PipenessTrait
         return $this->getBaseOfChain($iterator);
     }
 
-    protected function getBaseOfChain($iterator, $pipeInstance = false)
+    public function getBaseOfChain($iterator, $pipeInstance = false)
     {
+        $last = $iterator;
         while (true) {
             switch (true) {
                 case is_a($iterator, "\\Pipes\\PipeIterator"):
@@ -99,7 +104,6 @@ trait PipenessTrait
                     if ($pipeInstance) {
                         return $last;
                     }
-
                     return $iterator;
             }
         }

@@ -6,22 +6,23 @@ use Pipes\Iterator\AppendIterator;
 
 trait AppendTrait
 {
-    /**
-     * Adds an iterator to the queue
-     *
-     * @param array|\Iterator
-     * @return \Pipes\Pipe
-     */
+
     public function append($iterator)
     {
         if (is_array($iterator)) {
             $iterator = new \ArrayIterator($iterator);
         }
-        if (is_a($this,"\\Pipes\\PipeIterator")) {
-            $appendIterator = $this->getInnerIterator();
+
+        $me = $this;
+        while (is_a($me, "\\Pipes\\PipeIterator")) {
+            $me = $me->getInnerIterator();
+        }
+
+        if (is_a($me, "\\Pipes\\Iterator\\AppendIterator")) {
+            $appendIterator = $me;
         } else {
             $appendIterator = new AppendIterator();
-            $appendIterator->append($this->unwrap());
+            $appendIterator->append($me->unwrap());
         }
 
         $appendIterator->append($iterator);

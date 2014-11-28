@@ -14,12 +14,10 @@ class AppendIterator extends \AppendIterator
     /**
      * Works around the bug in which PHP calls rewind() and next() when appending
      *
-     * @param \Iterator $iterator Iterator to append
+     * @param \Traversable $iterator Iterator to append
      */
     public function append(\Iterator $iterator)
     {
-//        echo 'rewind'.PHP_EOL;
         $this->getArrayIterator()->append($iterator);
-//        $this->getArrayIterator()->append(new \NoRewindIterator($iterator));
     }
 }
