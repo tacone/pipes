@@ -43,4 +43,4 @@ nbproject
 vendor
 composer.lock
 .idea
-docs/playground.php
+playground
