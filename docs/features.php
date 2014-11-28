@@ -66,3 +66,29 @@ p()->keep(3)->each(function(){
 // map reduce
 p()->shard($function);
 p()->reduce($shard);
+
+
+/*
+
+Figure out how to:
+
+- properly replace an inneriterator with another in PipeIterator
+- properly append new iterms in PipeIterator
+- how to make PipeIterator a simple reference to a Pipe Instance
+
+- Pipe iterator should not wrap the Pipe instance but iterate on its
+inner iterator.
+- Thus, a new Pipe iterator should be initialized for each chainWith
+operation.
+- Pipe iterator should keep an instance of its pipe for easy retrieval.
+- Each chain operation on Pipe iterator should be passed on to its
+  Pipe parent, but should be reflected on the iterator (?)
+
+Should we return a new Pipe instance for each chainWith?
+$pipe = p($collection)->filter('isEmpty');
+$map = $pipe->map('myfunc')->each('func')->limit(3);
+$discard = $pipe->each('logme');
+$result = $map->toArray();
+$discarded = $discard->toArray();
+
+ */

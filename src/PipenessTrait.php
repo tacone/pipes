@@ -18,9 +18,29 @@ trait PipenessTrait
     use Filter\SkipTrait;
     use Filter\ValuesTrait;
 
+    /**
+     * @param  \Iterator $iterator
+     * @return static
+     */
+    protected function chainWith(\Iterator $iterator)
+    {
+//        if (is_a($iterator, "\\Pipes\\PipeIterator")) {
+//            return p($iterator)->toIterator();
+//        }
+        $this->var = $iterator;
+        return $this;
+    }
+
     public function toArray()
     {
-        return iterator_to_array($this->var, true);
+//        if (is_a($this, "\\IteratorAggregate"))
+//        {
+            $iterator = $this->var;
+//        } else {
+//            $iterator = $this;
+//        }
+
+        return iterator_to_array($iterator, true);
     }
 
     /**
@@ -46,22 +66,13 @@ trait PipenessTrait
 
         return new PipeIterator($appendIterator);
 
+
 //        if (is_a($this, "\\Pipes\\PipeIterator")) {
 //            return $this;
 //        }
 //        return new PipeIterator($this);
     }
 
-    /**
-     * @param  \Iterator $iterator
-     * @return static
-     */
-    protected function chainWith(\Iterator $iterator)
-    {
-        $this->var = $iterator;
-
-        return $this;
-    }
 
     /**
      * @return \Traversable
@@ -75,9 +86,12 @@ trait PipenessTrait
     }
 
     /**
+     * Returns the latest non pipe Iterator/Traversable in the
+     * chain
+     *
      * @return \Traversable
      */
-    protected function unwrap()
+    public function unwrap()
     {
         $iterator = func_num_args() ? func_get_arg(0) : $this;
 
