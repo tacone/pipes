@@ -11,7 +11,7 @@ class EachTest extends BaseTestCase
         $counter = 0;
         $obj = p($array)->each(function () use (&$counter) {
             $counter++;
-        });
+        }, true);
         $obj->toArray();
         $this->assertEquals(6, $counter);
 
@@ -19,7 +19,7 @@ class EachTest extends BaseTestCase
         $result = [];
         $obj = p($array)->each(function ($value, $key) use (&$result) {
             $result[$key] = $value;
-        });
+        }, true);
         $obj->toArray();
         $this->assertEquals($array, $result);
     }

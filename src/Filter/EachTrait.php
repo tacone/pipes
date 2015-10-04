@@ -13,15 +13,17 @@ trait EachTrait
      *      - $key (iterator's key())
      *      - $iterator (the iterator itself)
      *
-     * @param  callable    $callback
+     * @param  callable $callback
      * @return \Pipes\Pipe
      */
-    public function each(callable $______callback)
+    public function each(callable $______callback, $______allArgs = false)
     {
-        return $this->chainWith(new \CallbackFilterIterator($this->getIterator(), function () use ($______callback) {
-            call_user_func_array($______callback, func_get_args());
-
-            return true;
-        }));
+        return $this->chainWith(
+            new \CallbackFilterIterator($this->getIterator(),
+                function () use ($______callback, $______allArgs
+                ) {
+                    call_user_func_array($______callback, $______allArgs ? func_get_args() : [func_get_arg(0)]);
+                    return true;
+                }));
     }
 }
