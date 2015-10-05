@@ -114,5 +114,5 @@ trait PipenessTrait
                     return $iterator;
             }
         }
-    }
+    } // @codeCoverageIgnore
 }
