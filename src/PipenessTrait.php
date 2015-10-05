@@ -18,6 +18,7 @@ trait PipenessTrait
     use Filter\SkipTrait;
     use Filter\ValuesTrait;
     use Filter\SleepTrait;
+    use Filter\InfiniteTrait;
 
     /**
      * @param  \Iterator $iterator
