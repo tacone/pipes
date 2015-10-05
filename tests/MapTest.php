@@ -71,21 +71,12 @@ class MapTest extends CallbackTestCase
 
     public function testGenerator()
     {
-        if (version_compare(PHP_VERSION, '5.5') < 1) {
-            echo "[PHP<5.5:skipping]";
-
-            return;
-        }
-
-        // avoid parse errors on php 5.4
-        eval('
-            $array = function () {
-                $a = 0;
-                while ($a <= 1e4) {
-                    yield $a++;
-                }
-            };
-        ');
+        $array = function () {
+            $a = 0;
+            while ($a <= 1e4) {
+                yield $a++;
+            }
+        };
 
         $obj = p($array())->map(function ($value) {
             return p()->emit(0, $value);
@@ -99,13 +90,13 @@ class MapTest extends CallbackTestCase
     public function testAppend()
     {
         $me = $this;
-        $array = $obj = p(['a'=>3])->map(function ($v, $k, $pipe) use ($me) {
+        $array = $obj = p(['a' => 3])->map(function ($v, $k, $pipe) use ($me) {
             if ($v === 3) {
-                $pipe->append(['b'=>4]);
+                $pipe->append(['b' => 4]);
             }
 
             return $v;
         })->toArray();
-        $this->assertSame(['a'=>3,'b'=>4], $array);
+        $this->assertSame(['a' => 3, 'b' => 4], $array);
     }
 }
