@@ -22,7 +22,7 @@ trait AppendTrait
             $appendIterator = $me;
         } else {
             $appendIterator = new AppendIterator();
-            $appendIterator->append($me->unwrap());
+            $appendIterator->append($me->toIterator());
         }
 
         $appendIterator->append($iterator);

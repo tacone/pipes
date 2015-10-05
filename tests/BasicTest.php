@@ -1,6 +1,8 @@
 <?php
 namespace Pipes\Test;
 
+use Pipes\Test\Tools\TestIteratorAggregate;
+
 class BasicTest extends BaseTestCase
 {
 
@@ -64,11 +66,22 @@ class BasicTest extends BaseTestCase
 
         $this->assertEquals(get_class(p($array)), get_class($pipe));
     }
-    public function testAssociative()
+
+    public function testToIterator()
     {
-//        $array = $this->associative();
-//        $pipe = p($array);
-//        $this->assertEquals ($array['a'], $pipe['a']);
+        $array = $this->associative();
+        $this->assertInstanceOf(\Iterator::class, p($array)->toIterator());
+    }
+
+    public function testUnwrap()
+    {
+        $expected = $this->associative();
+        $obj = p($expected);
+        $this->assertSame($expected, $obj->unwrap());
+
+        $expected = new TestIteratorAggregate($this->associative());
+        $obj = p($expected);
+        $this->assertSame($expected, $obj->unwrap());
     }
 
 }

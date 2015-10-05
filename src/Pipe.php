@@ -4,6 +4,7 @@ namespace Pipes;
 
 use ArrayIterator;
 use IteratorAggregate;
+use Pipes\Iterator\PlainArrayIterator;
 
 class Pipe implements IteratorAggregate
 {
@@ -14,7 +15,7 @@ class Pipe implements IteratorAggregate
     public function __construct(&$var = null)
     {
         if (is_array($var)) {
-            $this->var = new ArrayIterator($var);
+            $this->var = new PlainArrayIterator($var);
         }
         if ($var instanceof \Traversable) {
             $this->var = $var;

@@ -67,12 +67,6 @@ trait PipenessTrait
         $appendIterator->append($iterator);
 
         return new PipeIterator($appendIterator);
-
-
-//        if (is_a($this, "\\Pipes\\PipeIterator")) {
-//            return $this;
-//        }
-//        return new PipeIterator($this);
     }
 
 
@@ -81,9 +75,6 @@ trait PipenessTrait
      */
     protected function getRoot()
     {
-//        echo "xxxxx\n";
-//        var_dump(get_class($this));
-//        echo "xxxxx\n";
         return $this->getBaseOfChain($this,true);
     }
 
@@ -113,8 +104,8 @@ trait PipenessTrait
                     $last = $iterator;
                     $iterator = $last->getIterator();
                     break;
-                case is_a($iterator, "\\IteratorAggregate"):
-                    $iterator = $last->getIterator();
+                case is_a($iterator, "\\ArrayIterator"):
+                    $iterator = $iterator->getArrayCopy();
                     break;
                 default:
                     if ($pipeInstance) {
