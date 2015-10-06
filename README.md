@@ -26,6 +26,7 @@ The advantages are:
 - you can traverse enourmous arrays using less memory
 - you don't execute unnecessary operations when you need just
   a subset.
+- you can control the flow
 - the resulting code is neat and pretty
 
 Of course this is just the beginning.
@@ -33,7 +34,7 @@ Of course this is just the beginning.
 
 ## Features
 
-The current featureset is pretty minimal. Below is a syntetic description
+The current feature set is pretty minimal. Below is a syntetic description
 of the current methods. Keep in mind they are all documented and available
 for your favorite IDE auto-completion.
 
@@ -56,7 +57,7 @@ p($array)->append($arrayOrIterator); // uses \AppendIterator
 p($array)->map($function); // sort of array_map. Take a look to the tests.
 
 // iterator factories
-p()->files($function); // uses \GlobIterator
+p()->files($globPattern); // uses \GlobIterator, accepts the same args
 
 // terminators
 p()->toArray(); // returns a key=>value array. Last key wins.
@@ -73,8 +74,6 @@ Here is a quasi real world example: a simple scraper that handles retries,
 failures, etc.
 
 ```php
-<?php
-
 $website = new Website();
 
 $initialState = new stdClass();
@@ -141,4 +140,18 @@ $pipe = p([$context])
     })
     // sleep for 1.5 seconds to avoid bringing down the website
     ->sleep(1.5);
+
+// Everything ok, isn't it? Notice than nothing happened yet.
+// $pipe is now an aggregate iterator, which does not do anything
+// until you cycle on it or you call toArray();
+
+foreach ($pipe as $record) {
+    // you can leave this empty or insert your custom logic here
+}
+
+// if you don't need logic, you may just run it with
+$results = $pipe->toArray();
+
+// and if you do it again, it will run again :)
+$results = $pipe->toArray();
 ```
