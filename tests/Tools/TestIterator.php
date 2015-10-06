@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Pipes\Test\Tools;
 
 use ArrayIterator;
@@ -19,28 +18,28 @@ class TestIterator extends \IteratorIterator
 
     public function current()
     {
-        echo $this->key . ') ' . __METHOD__ . PHP_EOL;
+        echo $this->key.') '.__METHOD__.PHP_EOL;
 
         return parent::current();
     }
 
     public function next()
     {
-        echo $this->key . ') ' . __METHOD__ . PHP_EOL;
-        $this->key++;
+        echo $this->key.') '.__METHOD__.PHP_EOL;
+        ++$this->key;
         parent::next();
     }
 
     public function key()
     {
-        echo $this->key . ') ' . __METHOD__ . PHP_EOL;
+        echo $this->key.') '.__METHOD__.PHP_EOL;
 
         return parent::key();
     }
 
     public function valid()
     {
-        echo $this->key . ') ' . __METHOD__ . PHP_EOL;
+        echo $this->key.') '.__METHOD__.PHP_EOL;
 
         return parent::valid();
     }
@@ -50,5 +49,4 @@ class TestIterator extends \IteratorIterator
         parent::rewind();
         $this->key = 0;
     }
-
 }

@@ -4,7 +4,6 @@ namespace Pipes\Iterator;
 
 class MapIterator extends \FilterIterator
 {
-
     protected $callback = null;
     protected $result = null;
 
@@ -21,7 +20,7 @@ class MapIterator extends \FilterIterator
 
     public function key()
     {
-        if (!is_a($this->result, "\\Pipes\\Concept\\Emittable") || !$this->result->hasKey()) {
+        if (!is_a($this->result, '\\Pipes\\Concept\\Emittable') || !$this->result->hasKey()) {
             return $this->getInnerIterator()->key();
         }
 
@@ -30,7 +29,7 @@ class MapIterator extends \FilterIterator
 
     public function current()
     {
-        if (!is_a($this->result, "\\Pipes\\Concept\\Emittable")) {
+        if (!is_a($this->result, '\\Pipes\\Concept\\Emittable')) {
             return $this->result;
         }
 

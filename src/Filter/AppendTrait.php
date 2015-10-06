@@ -6,7 +6,6 @@ use Pipes\Iterator\AppendIterator;
 
 trait AppendTrait
 {
-
     public function append($iterator)
     {
         if (is_array($iterator)) {
@@ -14,11 +13,11 @@ trait AppendTrait
         }
 
         $me = $this;
-        while (is_a($me, "\\Pipes\\PipeIterator")) {
+        while (is_a($me, '\\Pipes\\PipeIterator')) {
             $me = $me->getInnerIterator();
         }
 
-        if (is_a($me, "\\Pipes\\Iterator\\AppendIterator")) {
+        if (is_a($me, '\\Pipes\\Iterator\\AppendIterator')) {
             $appendIterator = $me;
         } else {
             $appendIterator = new AppendIterator();

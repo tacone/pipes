@@ -4,7 +4,6 @@ namespace Pipes\Test;
 
 class ChunkTest extends BaseTestCase
 {
-
     public function testChunkEven()
     {
         $array = $this->associative();
@@ -12,7 +11,7 @@ class ChunkTest extends BaseTestCase
         $expected = [
             ['apples', 'bananas', 'cherries']
             ,
-            ['damsons', 'elderberries', 'figs']
+            ['damsons', 'elderberries', 'figs'],
         ];
         $this->assertSame($expected, $obj->toArray());
     }
@@ -24,7 +23,7 @@ class ChunkTest extends BaseTestCase
         $expected = [
             ['apples', 'bananas', 'cherries', 'damsons', 'elderberries']
             ,
-            ['figs']
+            ['figs'],
         ];
         $this->assertSame($expected, $obj->toArray());
     }
@@ -34,5 +33,4 @@ class ChunkTest extends BaseTestCase
         $this->setExpectedException('\InvalidArgumentException');
         $obj = p($this->associative())->chunk(-3);
     }
-
 }

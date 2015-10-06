@@ -6,7 +6,7 @@ trait FilesTrait
 {
     /**
      * Iterates files
-     * (internally uses \GlobIterator)
+     * (internally uses \GlobIterator).
      *
      * <code>
      * $files = p->files('/tmp/*.txt');
@@ -44,8 +44,9 @@ trait FilesTrait
      *
      * </code>
      *
-     * @param  string      $path  any file wildcard (ie:/tmp/*.txt). Use the full path!
-     * @param  int         $flags any GlobIterator or FilesystemIterator flag
+     * @param string $path  any file wildcard (ie:/tmp/*.txt). Use the full path!
+     * @param int    $flags any GlobIterator or FilesystemIterator flag
+     *
      * @return \Pipes\Pipe
      */
     public function files($path, $flags = \GlobIterator::CURRENT_AS_PATHNAME)

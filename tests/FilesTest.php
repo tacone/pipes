@@ -45,10 +45,9 @@ class FilesTest extends BaseTestCase
         $result = $obj->toArray();
         $this->assertSame(count($expected), count($result));
         foreach ($result as $fileInfo) {
-            $this->assertInstanceOf("\\SplFileInfo", $fileInfo);
+            $this->assertInstanceOf('\\SplFileInfo', $fileInfo);
         }
 
         $path = $this->removeTest($array, $path);
     }
-
 }

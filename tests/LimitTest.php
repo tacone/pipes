@@ -4,7 +4,6 @@ namespace Pipes\Test;
 
 class LimitTest extends BaseTestCase
 {
-
     public function testLimit()
     {
         $array = $this->associative();
@@ -12,18 +11,17 @@ class LimitTest extends BaseTestCase
         $expected = ['a' => 'apples', 'b' => 'bananas', 'c' => 'cherries'];
         $this->assertEquals($expected, $obj->toArray());
 
-        $obj = p($array)->limit(1,2);
-        $expected = [ 'b' => 'bananas', 'c' => 'cherries'];
+        $obj = p($array)->limit(1, 2);
+        $expected = ['b' => 'bananas', 'c' => 'cherries'];
         $this->assertEquals($expected, $obj->toArray());
 
-        $obj = p($array)->limit(1,0);
+        $obj = p($array)->limit(1, 0);
         $this->assertEquals([], $obj->toArray());
 
         try {
             $obj = p($array)->limit(-2);
-            $this->fail("\\OutOfRangeException expected");
+            $this->fail('\\OutOfRangeException expected');
         } catch (\OutOfRangeException $ex) {
-
         }
     }
     public function testToIterator()
@@ -34,19 +32,17 @@ class LimitTest extends BaseTestCase
         $expected = ['a' => 'apples', 'b' => 'bananas', 'c' => 'cherries'];
         $this->assertEquals($expected, $obj->toArray());
 
-        $obj = p($array)->toIterator()->limit(1,2);
-        $expected = [ 'b' => 'bananas', 'c' => 'cherries'];
+        $obj = p($array)->toIterator()->limit(1, 2);
+        $expected = ['b' => 'bananas', 'c' => 'cherries'];
         $this->assertEquals($expected, $obj->toArray());
 
-        $obj = p($array)->toIterator()->limit(1,0);
+        $obj = p($array)->toIterator()->limit(1, 0);
         $this->assertEquals([], $obj->toArray());
 
         try {
             $obj = p($array)->toIterator()->limit(-2);
-            $this->fail("\\OutOfRangeException expected");
+            $this->fail('\\OutOfRangeException expected');
         } catch (\OutOfRangeException $ex) {
-
         }
     }
-
 }

@@ -6,7 +6,7 @@ trait MapTrait
 {
     /**
      * Tranforms each element into something else using a callback
-     * (rough equivalent of array_map())
+     * (rough equivalent of array_map()).
      *
      * The callback should return the new element.
      *
@@ -17,7 +17,8 @@ trait MapTrait
      * });
      *
      *
-     * @param  callable    $callback
+     * @param callable $callback
+     *
      * @return \Pipes\Pipe
      */
     public function map(callable $callback)

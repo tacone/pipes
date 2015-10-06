@@ -5,7 +5,7 @@ namespace Pipes\Filter;
 trait ValuesTrait
 {
     /**
-     * Returns all the elements, reindexes the keys (0,1,2,..,n)
+     * Returns all the elements, reindexes the keys (0,1,2,..,n).
      *
      * Use this to avoid key collisions.
      *

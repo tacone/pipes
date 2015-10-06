@@ -4,7 +4,6 @@ namespace Pipes\Test;
 
 class ValuesTest extends BaseTestCase
 {
-
     public function testValues()
     {
         $array = $this->associative();
@@ -51,5 +50,4 @@ class ValuesTest extends BaseTestCase
         ];
         $this->assertSame($expected, $obj);
     }
-
 }

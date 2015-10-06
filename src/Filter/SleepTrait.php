@@ -7,7 +7,8 @@ trait SleepTrait
     /**
      * Sleeps a given number of seconds in each iteration.
      *
-     * @param  float $seconds
+     * @param float $seconds
+     *
      * @return \Pipes\Pipe
      */
     public function sleep($seconds)
@@ -16,6 +17,7 @@ trait SleepTrait
             new \CallbackFilterIterator($this->getIterator(),
                 function () use ($seconds) {
                     usleep($seconds * 1000000);
+
                     return true;
                 }));
     }

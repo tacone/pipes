@@ -3,7 +3,6 @@
 namespace Pipes;
 
 use Pipes\Iterator\AppendIterator;
-use Pipes\Test\PipeIterationTest;
 
 trait PipenessTrait
 {
@@ -22,7 +21,8 @@ trait PipenessTrait
     use Filter\StopIfTrait;
 
     /**
-     * @param  \Iterator $iterator
+     * @param \Iterator $iterator
+     *
      * @return static
      */
     protected function chainWith(\Iterator $iterator)
@@ -42,7 +42,7 @@ trait PipenessTrait
     /**
      * Returns a complete iterator.
      * (an instance of \IteratorIterator which in turn
-     * implements \OuterIterator)
+     * implements \OuterIterator).
      *
      * Use this method if you need to comply with type-hinting
      * from external libraries
@@ -63,7 +63,6 @@ trait PipenessTrait
         return new PipeIterator($appendIterator);
     }
 
-
     /**
      * @return \Traversable
      */
@@ -74,7 +73,7 @@ trait PipenessTrait
 
     /**
      * Returns the latest non pipe Iterator/Traversable in the
-     * chain
+     * chain.
      *
      * @return \Traversable
      */
@@ -90,21 +89,22 @@ trait PipenessTrait
         $last = $iterator;
         while (true) {
             switch (true) {
-                case is_a($iterator, "\\Pipes\\PipeIterator"):
+                case is_a($iterator, '\\Pipes\\PipeIterator'):
                     $last = $iterator;
                     $iterator = $last->getInnerIterator();
                     break;
-                case is_a($iterator, "\\Pipes\\Pipe"):
+                case is_a($iterator, '\\Pipes\\Pipe'):
                     $last = $iterator;
                     $iterator = $last->getIterator();
                     break;
-                case is_a($iterator, "\\ArrayIterator"):
+                case is_a($iterator, '\\ArrayIterator'):
                     $iterator = $iterator->getArrayCopy();
                     break;
                 default:
                     if ($pipeInstance) {
                         return $last;
                     }
+
                     return $iterator;
             }
         }
@@ -112,7 +112,7 @@ trait PipenessTrait
 
     protected function executeCallback($______callback, $______allArgs, $value, $key, $iterator)
     {
-       return call_user_func_array(
+        return call_user_func_array(
             $______callback,
             $______allArgs ? [$value, $key, $iterator] : [$value]
        );

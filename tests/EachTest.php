@@ -4,13 +4,12 @@ namespace Pipes\Test;
 
 class EachTest extends BaseTestCase
 {
-
     public function testEach()
     {
         $array = $this->associative();
         $counter = 0;
         $obj = p($array)->each(function () use (&$counter) {
-            $counter++;
+            ++$counter;
         }, true);
         $obj->toArray();
         $this->assertEquals(6, $counter);
@@ -23,5 +22,4 @@ class EachTest extends BaseTestCase
         $obj->toArray();
         $this->assertEquals($array, $result);
     }
-
 }

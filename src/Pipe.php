@@ -2,7 +2,6 @@
 
 namespace Pipes;
 
-use ArrayIterator;
 use IteratorAggregate;
 use Pipes\Iterator\PlainArrayIterator;
 

@@ -1,9 +1,10 @@
 <?php
+
 namespace Pipes\Test;
 
 class BaseTestCase extends \PHPUnit_Framework_TestCase
 {
-    static $useToIterator = false;
+    public static $useToIterator = false;
 
     public function __construct($name = null, array $data = array(), $dataName = '')
     {
@@ -18,6 +19,7 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
     {
         $arguments = func_get_args();
         $pipe = call_user_func_array('\p', $arguments);
+
         return static::$useToIterator ? $pipe->toIterator() : $pipe;
     }
 

@@ -6,7 +6,7 @@ trait StopIfTrait
 {
     /**
      * Stops the iteration if the callback returns a true-ish value.
-     * The current element will not be included
+     * The current element will not be included.
      *
      * The passed callback will be invoked with the following argument:
      *
@@ -20,6 +20,7 @@ trait StopIfTrait
      *
      * @param $______callback
      * @param bool $______allArgs
+     *
      * @return \Pipes\Pipe
      */
     public function stopif($______callback, $______allArgs = false)
@@ -32,16 +33,17 @@ trait StopIfTrait
                 if ($pipe->executeCallback($______callback, $______allArgs, $value, $key, $iterator)
                 ) {
                     return;
-                }
+                } // @codeCoverageIgnore
                 yield $key => $value;
             }
         };
+
         return $this->chainWith($generator());
     }
 
     /**
      * Stops the iteration if the callback returns a true-ish value.
-     * The current element will not be included
+     * The current element will not be included.
      *
      * The passed callback will be invoked with the following argument:
      *
@@ -55,6 +57,7 @@ trait StopIfTrait
      *
      * @param $______callback
      * @param bool $______allArgs
+     *
      * @return \Pipes\Pipe
      */
     public function continueIf($______callback, $______allArgs = false)
@@ -67,10 +70,11 @@ trait StopIfTrait
                 if (!$pipe->executeCallback($______callback, $______allArgs, $value, $key, $iterator)
                 ) {
                     return;
-                }
+                } // @codeCoverageIgnore
                 yield $key => $value;
             }
         };
+
         return $this->chainWith($generator());
     }
 }

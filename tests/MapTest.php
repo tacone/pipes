@@ -6,7 +6,6 @@ use Pipes\Test\TestCase\CallbackTestCase;
 
 class MapTest extends CallbackTestCase
 {
-
     public function testMap()
     {
         $array = $this->numerics();
@@ -44,7 +43,7 @@ class MapTest extends CallbackTestCase
     }
 
     /**
-     * In case of multiple items with the same key, the last one should win
+     * In case of multiple items with the same key, the last one should win.
      */
     public function testKeyConflicts()
     {
@@ -55,7 +54,7 @@ class MapTest extends CallbackTestCase
         });
         $result = $obj->toArray();
         $this->assertEquals([
-            'a' => 5
+            'a' => 5,
         ], $result);
 
         // test with numeric indexes
@@ -65,7 +64,7 @@ class MapTest extends CallbackTestCase
         });
         $result = $obj->toArray();
         $this->assertEquals([
-            0 => 5
+            0 => 5,
         ], $result);
     }
 
@@ -83,7 +82,7 @@ class MapTest extends CallbackTestCase
         });
         $result = $obj->toArray();
         $this->assertEquals([
-            0 => 1e4
+            0 => 1e4,
         ], $result);
     }
 

@@ -4,7 +4,6 @@ namespace Pipes\Filter;
 
 trait InfiniteTrait
 {
-
     /***
      * Turns the pipe into an infinite stream by auto rewinding once it reachs
      * the end.

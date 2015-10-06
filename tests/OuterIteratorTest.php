@@ -6,7 +6,6 @@ use Pipes\Test\TestCase\BaseIteratorTestCase;
 
 class OuterIteratorTest extends BaseIteratorTestCase
 {
-
     public function testImplementsIteratorAggregate()
     {
         $obj = p($this->associative());
@@ -17,5 +16,4 @@ class OuterIteratorTest extends BaseIteratorTestCase
     {
         return  p($this->associative())->toIterator();
     }
-
 }

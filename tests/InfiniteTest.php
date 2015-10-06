@@ -4,18 +4,19 @@ namespace Pipes\Test;
 
 class InfiniteTest extends BaseTestCase
 {
-
     public function testInfinite()
     {
-        $array = array_slice($this->associative(), 0,2);
+        $array = array_slice($this->associative(), 0, 2);
         $obj = p($array)->infinite();
 
         $result = [];
         $i = 0;
         foreach ($obj as $value) {
             $result[] = $value;
-            $i++;
-            if ($i >= 6) break;
+            ++$i;
+            if ($i >= 6) {
+                break;
+            }
         }
 
         $expected = [
@@ -26,6 +27,4 @@ class InfiniteTest extends BaseTestCase
 
         $this->assertSame($expected, $result);
     }
-
-
 }

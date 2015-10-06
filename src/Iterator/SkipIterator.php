@@ -7,7 +7,7 @@ use Traversable;
 class SkipIterator extends \FilterIterator
 {
     /**
-     * @var integer number of elements to skip
+     * @var int number of elements to skip
      */
     protected $num;
     protected $skipped = 0;
@@ -19,8 +19,10 @@ class SkipIterator extends \FilterIterator
     }
 
     /**
-     * Check whether the current element of the iterator is acceptable
+     * Check whether the current element of the iterator is acceptable.
+     *
      * @link http://php.net/manual/en/filteriterator.accept.php
+     *
      * @return bool true if the current element is acceptable, otherwise false.
      */
     public function accept()
@@ -29,7 +31,7 @@ class SkipIterator extends \FilterIterator
             return true;
         }
 
-        $this->skipped++;
+        ++$this->skipped;
 
         return false;
     }
@@ -39,5 +41,4 @@ class SkipIterator extends \FilterIterator
         $this->skipped = 0;
         parent::rewind();
     }
-
 }

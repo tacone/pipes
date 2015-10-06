@@ -1,17 +1,17 @@
 <?php
+
 namespace Pipes\Test;
 
 use Pipes\Test\Tools\TestIteratorAggregate;
 
 class BasicTest extends BaseTestCase
 {
-
     public function testWrapper()
     {
         $array = $this->numerics();
         $this->assertEquals(p($array)->toArray(), $array);
 
-        list ($a, $b, $c, $d) = p($array)->toArray();
+        list($a, $b, $c, $d) = p($array)->toArray();
         $this->assertEquals($b, 2);
 
         $result = [];
@@ -83,5 +83,4 @@ class BasicTest extends BaseTestCase
         $obj = p($expected);
         $this->assertSame($expected, $obj->unwrap());
     }
-
 }

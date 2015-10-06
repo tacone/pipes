@@ -4,7 +4,6 @@ namespace Pipes\Test;
 
 class SkipTest extends BaseTestCase
 {
-
     public function testSkip()
     {
         $array = $this->associative();
@@ -49,5 +48,4 @@ class SkipTest extends BaseTestCase
         ];
         $this->assertSame($expected, $obj->toArray());
     }
-
 }

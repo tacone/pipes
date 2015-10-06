@@ -5,9 +5,10 @@ namespace Pipes\Filter;
 trait SkipTrait
 {
     /**
-     * Discards the first $num elements
+     * Discards the first $num elements.
      *
      * @param $num
+     *
      * @return \Pipes\Pipe
      */
     public function skip($num)

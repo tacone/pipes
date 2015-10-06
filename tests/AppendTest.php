@@ -4,7 +4,6 @@ namespace Pipes\Test;
 
 class AppendTest extends BaseTestCase
 {
-
     public function testAppend()
     {
         $array = $this->associative();

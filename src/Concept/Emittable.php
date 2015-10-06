@@ -9,8 +9,7 @@ class Emittable extends Value
     public function getKey()
     {
         if (!$this->key) {
-            throw new \LogicException("Emitted value has no key defined");
-
+            throw new \LogicException('Emitted value has no key defined');
         }
 
         return $this->key->getValue();
@@ -23,5 +22,4 @@ class Emittable extends Value
     {
         return is_object($this->key);
     }
-
 }

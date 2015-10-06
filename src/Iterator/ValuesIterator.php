@@ -1,9 +1,9 @@
 <?php
+
 /**
  * Derived by Guzzle's ChunkedIterator https://github.com/guzzle/iterator/blob/master/ChunkedIterator.php
- * credit goes to the original authors
+ * credit goes to the original authors.
  */
-
 namespace Pipes\Iterator;
 
 class ValuesIterator extends \IteratorIterator
@@ -24,6 +24,6 @@ class ValuesIterator extends \IteratorIterator
     public function next()
     {
         parent::next();
-        $this->key++;
+        ++$this->key;
     }
 }

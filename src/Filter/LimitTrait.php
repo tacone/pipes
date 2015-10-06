@@ -7,13 +7,14 @@ trait LimitTrait
     /**
      * Return only a subset of items. Behaves similarly to MYSQL's
      * "LIMIT" clause.
-     * (internally uses \LimitIterator)
+     * (internally uses \LimitIterator).
      *
      *  <code>p()->limit(5)</code> will return only the first five elements.
      *  <code>p()->limit(2, 5)</code> will skip 2 element, and return the next 5.
      *
      * @param $boundary1
-     * @param  bool        $boundary2
+     * @param bool $boundary2
+     *
      * @return \Pipes\Pipe
      */
     public function limit($boundary1, $boundary2 = false)

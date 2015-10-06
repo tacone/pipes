@@ -8,7 +8,7 @@ abstract class BaseIteratorTestCase extends BaseTestCase
 {
     protected $expected = [
         ['a', 'apples'],
-        ['b', 'bananas']
+        ['b', 'bananas'],
     ];
 
     abstract protected function getObject();
