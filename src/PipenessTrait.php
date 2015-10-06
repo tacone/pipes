@@ -19,6 +19,7 @@ trait PipenessTrait
     use Filter\ValuesTrait;
     use Filter\SleepTrait;
     use Filter\InfiniteTrait;
+    use Filter\StopIfTrait;
 
     /**
      * @param  \Iterator $iterator
@@ -26,21 +27,14 @@ trait PipenessTrait
      */
     protected function chainWith(\Iterator $iterator)
     {
-//        if (is_a($iterator, "\\Pipes\\PipeIterator")) {
-//            return p($iterator)->toIterator();
-//        }
         $this->var = $iterator;
+
         return $this;
     }
 
     public function toArray()
     {
-//        if (is_a($this, "\\IteratorAggregate"))
-//        {
-            $iterator = $this->var;
-//        } else {
-//            $iterator = $this;
-//        }
+        $iterator = $this->var;
 
         return iterator_to_array($iterator, true);
     }
@@ -75,7 +69,7 @@ trait PipenessTrait
      */
     protected function getRoot()
     {
-        return $this->getBaseOfChain($this,true);
+        return $this->getBaseOfChain($this, true);
     }
 
     /**
@@ -115,4 +109,12 @@ trait PipenessTrait
             }
         }
     } // @codeCoverageIgnore
+
+    protected function executeCallback($______callback, $______allArgs, $value, $key, $iterator)
+    {
+       return call_user_func_array(
+            $______callback,
+            $______allArgs ? [$value, $key, $iterator] : [$value]
+       );
+    }
 }

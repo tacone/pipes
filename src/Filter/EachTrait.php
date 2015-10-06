@@ -8,12 +8,18 @@ trait EachTrait
      * Applies a callback to each element.
      * (internally uses \CallbackFilterIterator)
      *
-     * The passed callback will be invoked with the following arguments:
+     * The passed callback will be invoked with the following argument:
+     *
      *      - $value (iterator's current())
+     *
+     * If the second parameter is true the following arguments will be added
+     * to the call:
+     *
      *      - $key (iterator's key())
      *      - $iterator (the iterator itself)
      *
-     * @param  callable $callback
+     * @param callable $______callback a PHP callable (closure, string or array)
+     * @param bool $______allArgs if true key and iterator will be passed to the callback
      * @return \Pipes\Pipe
      */
     public function each(callable $______callback, $______allArgs = false)
