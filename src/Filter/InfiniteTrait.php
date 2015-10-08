@@ -11,7 +11,7 @@ trait InfiniteTrait
      * WARNING: toArray() will lead to an infinite loop if there is no limit()
      * or other flow interrupting operations *after* infinite()
      *
-     * @return mixed
+     * @return \Pipes\Pipe
      */
 
     public function infinite()
