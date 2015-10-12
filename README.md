@@ -53,7 +53,6 @@ p($array)->stopIf($callback); // stops if the callback is true
 p($array)->sleep($seconds); // sleeps for $seconds seconds at each iteration
 
 // transformators
-p($array)->append($arrayOrIterator); // uses \AppendIterator
 p($array)->map($function); // sort of array_map. Take a look to the tests.
 
 // iterator factories
