@@ -63,13 +63,13 @@ trait PipenessTrait
         return new PipeIterator($appendIterator);
     }
 
-    /**
-     * @return \Traversable
-     */
-    protected function getRoot()
-    {
-        return $this->getBaseOfChain($this, true);
-    }
+//    /**
+//     * @return \Traversable
+//     */
+//    protected function getRoot()
+//    {
+//        return $this->getBaseOfChain($this, true);
+//    }
 
     /**
      * Returns the latest non pipe Iterator/Traversable in the
@@ -101,9 +101,10 @@ trait PipenessTrait
                     $iterator = $iterator->getArrayCopy();
                     break;
                 default:
-                    if ($pipeInstance) {
-                        return $last;
-                    }
+//                  --- was used by getRoot()
+//                    if ($pipeInstance) {
+//                        return $last;
+//                    }
 
                     return $iterator;
             }
