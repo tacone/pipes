@@ -42,15 +42,15 @@ class FilterTest extends CallbackTestCase
             $me->assertInstanceOf('\Pipes\PipeIterator', $pipe);
         })->toArray();
     }
-    public function testAppend()
-    {
-        $array = $obj = p(['a' => 3])->filter(function ($v, $k, $pipe) {
-            if ($v === 3) {
-                $pipe->append(['b' => 4]);
-            }
-
-            return true;
-        })->toArray();
-        $this->assertSame(['a' => 3, 'b' => 4], $array);
-    }
+//    public function testAppend()
+//    {
+//        $array = $obj = p(['a' => 3])->filter(function ($v, $k, $pipe) {
+//            if ($v === 3) {
+//                $pipe->append(['b' => 4]);
+//            }
+//
+//            return true;
+//        })->toArray();
+//        $this->assertSame(['a' => 3, 'b' => 4], $array);
+//    }
 }

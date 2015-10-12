@@ -6,5 +6,5 @@ use Pipes\Test\BaseTestCase;
 
 abstract class CallbackTestCase extends BaseTestCase
 {
-    abstract public function testAppend();
+    //    abstract public function testAppend();
 }

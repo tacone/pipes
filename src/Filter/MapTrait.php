@@ -2,6 +2,8 @@
 
 namespace Pipes\Filter;
 
+use Pipes\Concept\Emittable;
+
 trait MapTrait
 {
     /**
@@ -21,8 +23,26 @@ trait MapTrait
      *
      * @return \Pipes\Pipe
      */
-    public function map(callable $callback)
+    public function map(callable $______callback)
     {
-        return $this->chainWith(new \Pipes\Iterator\MapIterator($this->toIterator(), $callback));
+        $iterator = $this->getIterator();
+        $pipe = $this;
+
+        $generator = function () use ($pipe, $iterator, $______callback) {
+            foreach ($iterator as $key => $value) {
+                //                yield $key => $pipe->executeCallback($______callback, true, $value, $key, $iterator);
+                $value = $pipe->executeCallback($______callback, true, $value, $key, $iterator);
+                if ($value instanceof Emittable) {
+                    if ($value->hasKey()) {
+                        $key = $value->getKey();
+                    }
+                    $value = $value->getValue();
+                }
+                yield $key => $value;
+            }
+        };
+
+        return $this->chainWith($generator());
+//        return $this->chainWith(new \Pipes\Iterator\MapIterator($this->toIterator(), $callback));
     }
 }

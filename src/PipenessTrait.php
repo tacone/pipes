@@ -6,7 +6,7 @@ use Pipes\Iterator\AppendIterator;
 
 trait PipenessTrait
 {
-    use Filter\AppendTrait;
+    //    use Filter\AppendTrait;
     use Filter\ChunkTrait;
     use Filter\EachTrait;
     use Concept\EmitTrait;
