@@ -23,7 +23,7 @@ trait StopIfTrait
      *
      * @return \Pipes\Pipe
      */
-    public function stopif($______callback, $______allArgs = false)
+    public function stopIf($______callback, $______allArgs = false)
     {
         $iterator = $this->getIterator();
         $pipe = $this;
