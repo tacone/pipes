@@ -2,6 +2,7 @@ Pipes
 ==============
 [![Build Status](https://travis-ci.org/tacone/pipes.svg)](https://travis-ci.org/tacone/pipes)
 [![Coverage Status](https://img.shields.io/coveralls/tacone/pipes.svg)](https://coveralls.io/r/tacone/pipes)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/tacone/pipes/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/tacone/pipes/?branch=master)
 
 Pipes is a thin wrapper around PHP SPL iterators and generators.
 
