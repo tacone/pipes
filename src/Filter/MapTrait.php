@@ -28,7 +28,11 @@ trait MapTrait
         $iterator = $this->getIterator();
         $pipe = $this;
 
-        $reflectionFunction = new \ReflectionFunction($______callback);
+        if (!is_array($______callback)) {
+            $reflectionFunction = new \ReflectionFunction($______callback);
+        } else {
+            $reflectionFunction = new \ReflectionMethod($______callback[0], $______callback[1]);
+        }
 
         if ($reflectionFunction->isGenerator()) {
             $generator = $______callback;

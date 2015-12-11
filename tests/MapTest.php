@@ -86,6 +86,13 @@ class MapTest extends CallbackTestCase
         ], $result);
     }
 
+    public function generatorInClassMethod($iterator) {
+        foreach ($iterator as $key => $value) {
+            yield $key => $value;
+            yield $key . '_2' => $value . ':2';
+        }
+    }
+
     public function testGenerator()
     {
         $array = $this->associative();
@@ -111,6 +118,11 @@ class MapTest extends CallbackTestCase
             'f_2' => 'figs:2',
         ];
 
+        $this->assertEquals($expected, $result);
+
+        // let's see if passing a class method works also
+
+        $result = p($array)->map([$this, 'generatorInClassMethod'])->toArray();
         $this->assertEquals($expected, $result);
     }
 
