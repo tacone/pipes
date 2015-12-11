@@ -68,7 +68,7 @@ class MapTest extends CallbackTestCase
         ], $result);
     }
 
-    public function testGenerator()
+    public function testIterateAGenerator()
     {
         $array = function () {
             $a = 0;
@@ -84,6 +84,34 @@ class MapTest extends CallbackTestCase
         $this->assertEquals([
             0 => 1e4,
         ], $result);
+    }
+
+    public function testGenerator()
+    {
+        $array = $this->associative();
+        $result = p($array)->map(function ($iterator) {
+            foreach ($iterator as $key => $value) {
+                yield $key => $value;
+                yield $key . '_2' => $value . ':2';
+            }
+        })->toArray();
+
+        $expected = [
+            'a' => 'apples',
+            'a_2' => 'apples:2',
+            'b' => 'bananas',
+            'b_2' => 'bananas:2',
+            'c' => 'cherries',
+            'c_2' => 'cherries:2',
+            'd' => 'damsons',
+            'd_2' => 'damsons:2',
+            'e' => 'elderberries',
+            'e_2' => 'elderberries:2',
+            'f' => 'figs',
+            'f_2' => 'figs:2',
+        ];
+
+        $this->assertEquals($expected, $result);
     }
 
 //    public function testAppend()

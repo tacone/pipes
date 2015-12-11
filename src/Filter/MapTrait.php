@@ -28,21 +28,27 @@ trait MapTrait
         $iterator = $this->getIterator();
         $pipe = $this;
 
-        $generator = function () use ($pipe, $iterator, $______callback) {
-            foreach ($iterator as $key => $value) {
-                //                yield $key => $pipe->executeCallback($______callback, true, $value, $key, $iterator);
-                $value = $pipe->executeCallback($______callback, true, $value, $key, $iterator);
-                if ($value instanceof Emittable) {
-                    if ($value->hasKey()) {
-                        $key = $value->getKey();
-                    }
-                    $value = $value->getValue();
-                }
-                yield $key => $value;
-            }
-        };
+        $reflectionFunction = new \ReflectionFunction($______callback);
 
-        return $this->chainWith($generator());
+        if ($reflectionFunction->isGenerator()) {
+            $generator = $______callback;
+        } else {
+            $generator = function ($iterator) use ($pipe, $______callback) {
+                foreach ($iterator as $key => $value) {
+                    //                yield $key => $pipe->executeCallback($______callback, true, $value, $key, $iterator);
+                    $value = $pipe->executeCallback($______callback, true, $value, $key, $iterator);
+                    if ($value instanceof Emittable) {
+                        if ($value->hasKey()) {
+                            $key = $value->getKey();
+                        }
+                        $value = $value->getValue();
+                    }
+                    yield $key => $value;
+                }
+            };
+        }
+
+        return $this->chainWith($generator($iterator));
 //        return $this->chainWith(new \Pipes\Iterator\MapIterator($this->toIterator(), $callback));
     }
 }
